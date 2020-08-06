@@ -6,3 +6,5 @@ const mission = 5;
 const period = 5;
 
 alert('Hello Anna!')
+
+console.log('Today is the good day!');
