@@ -1,10 +1,10 @@
-const money = 5; 
-const income = 5; 
-const addExpenses = 5; 
-const deposit = 5; 
-const mission = 5; 
+let money = 5000; 
+const income = 8000; 
+let addExpenses = 3000; 
+let deposit = 15000; 
+const mission = 200000; 
 const period = 5;
 
-alert('Hello Anna!')
+alert('Hello Anna!');
 
 console.log('Today is the good day!');
