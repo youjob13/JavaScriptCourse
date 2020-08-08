@@ -1,58 +1,27 @@
     // объявление переменных
 
-    let num = 266219;
-    const Num = num;
-    let i = 0;
-    let num2 = 0;
+    const num = 266219;
     let arr = [];
-    let sum2 = 1;
+    let sum = 1;
     
-    // считаем кол-во цифр в числе
+    // из num делаем массив
 
-    while (num > 1) {
-        num = num / 10;
-        i++;
-    }
-
-    // необходимые жертвы) подругому не придумал
-    i++;
-    num = Num;
-    num2 = num % 10;
-    arr.push(num2);
-
-    // Исходное число разбиваем на цифры и заносим в массив
-
-    for (let j = 1; j !== i; j++) {
-        num2 = num % Math.pow(10, j);
-        if (num2 > 10) {
-            num2 = Math.floor(num2 / Math.pow(10, j-1));
-            arr.push(num2);
-        }
-    }
+    stringNum = num + '';
+    arr = stringNum.split([]);
 
     // Функция для расчета произведения значений массива (подсмотрел в интернете)
     
-    sum2 = arr.reduce((first, last) => first * last); 
-    console.log(sum2);
+    sum = arr.reduce((first, last) => first * last); 
+    console.log(sum);
 
     // Возведение в степень
     
-    let x = 3;
+    sum **= 3;
 
-    sum2 = sum2 ** x;
-
-    // Выводим первые 2 цифры sum2
+    // Отделяем первые 2 цифры sum
     
-    let k= 0;
-
-    // Снова находим кол-во цифр в числе
-
-    while (sum2 > 1) {
-        sum2 = sum2 / 10;
-        k++;
-    }
-    // Отделяем первые 2 цифры sum2
-    sum2 = Math.floor(sum2 * 100);
-    document.getElementById('figure').innerHTML = sum2;
+    stringSum = sum + '';
+    stringSum = stringSum.slice(0,2);
+    document.getElementById('figure').innerHTML = stringSum;
 
 
