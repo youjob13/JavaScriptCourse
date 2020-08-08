@@ -30,8 +30,6 @@
         }
     }
 
-    console.log(arr);
-
     // Функция для расчета произведения значений массива (подсмотрел в интернете)
     
     sum2 = arr.reduce((first, last) => first * last); 
@@ -42,7 +40,6 @@
     let x = 3;
 
     sum2 = sum2 ** x;
-    console.log(sum2);
 
     // Выводим первые 2 цифры sum2
     
@@ -56,5 +53,6 @@
     }
     // Отделяем первые 2 цифры sum2
     sum2 = Math.floor(sum2 * 100);
-    console.log(sum2);
+    document.getElementById('figure').innerHTML = sum2;
+
 
