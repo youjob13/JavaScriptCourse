@@ -25,7 +25,7 @@ console.log(addExpenses.toLowerCase().split([, []]));
 let budgetMonth = money - amount1 - amount2;
 console.log('Ваш бюджет на месяц: ' + budgetMonth);
 
-period = Math.round(mission / budgetMonth)
+period = Math.ceil(mission / budgetMonth)
 console.log('Цель будет достигнута: ' + period + ' месяцев');
 
 let budgetDay = Math.floor(budgetMonth / 30);
