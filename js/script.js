@@ -1,3 +1,5 @@
+'use strict'
+
 const income = 'Стипендия';
 const mission = 100000;
 let addExpenses = 'На покушать, На отдохнуть, На коммуналку',
@@ -25,7 +27,7 @@ let budgetDay = money / 30;
 
 money = prompt('Ваш ежемесячный доход?');
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-deposit = prompt('Есть ли у вас депозит в банке?');
+deposit = confirm('Есть ли у вас депозит в банке?');
 
 expenses1 = prompt('Введите обязательную статью расходов?');
 expenses2 = prompt('Введите обязательную статью расходов?');
