@@ -33,9 +33,10 @@ function getAccumulatedMonth() {
 accumulatedMonth = getAccumulatedMonth();
 
 function getTargetMonth() {
-    return  period = Math.ceil(mission / accumulatedMonth);
+    return Math.ceil(mission / accumulatedMonth);
 }
-console.log('Цель будет достигнута за: ' + getTargetMonth() + ' месяцев');
+period = getTargetMonth();
+console.log('Цель будет достигнута за: ' + period + ' месяцев');
 
 console.log('Ваш бюджет на день: ' + (budgetDay = Math.floor(accumulatedMonth / 30)) + ' руб.');
 
