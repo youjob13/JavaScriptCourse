@@ -41,13 +41,13 @@ console.log('Ваш бюджет на день: ' + (budgetDay = Math.floor(accu
 
 function getStatusIncome() {
     if (budgetDay >= 1200) {
-        console.log('У вас высокий уровень дохода');
+        return ('У вас высокий уровень дохода');
     } else if (budgetDay >= 600 && budgetDay < 1200) {
-        console.log('У вас средний уровень дохода');
+        return ('У вас средний уровень дохода');
     } else if (budgetDay >= 0 && budgetDay < 600) {
-        console.log('К сожалению у вас уровень дохода ниже среднего');
+        return ('К сожалению у вас уровень дохода ниже среднего');
     } else {
-        console.log('Что то пошло не так');
+        return ('Что то пошло не так');
     }
 }
-getStatusIncome();
+console.log(getStatusIncome());
