@@ -1,0 +1,12 @@
+body {
+    background-color: chocolate;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 250px;
+    font-size: 55px;
+}

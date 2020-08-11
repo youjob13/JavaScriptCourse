@@ -13,6 +13,7 @@ const income = 'Стипендия',
       amount2 = +prompt('Во сколько это обойдется?');
 const mission = 100000;
 
+
 console.log(typeof money);
 console.log(typeof income);
 console.log(typeof deposit);
