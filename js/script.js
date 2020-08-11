@@ -13,10 +13,12 @@ const income = 'Стипендия',
       amount2 = +prompt('Во сколько это обойдется?');
 const mission = 100000;
 
-
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
+function showTypeOf(data) {
+    console.log(typeof (data));
+}
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
 
 function getExpensesMonth() {
     return amount1 + amount2;
