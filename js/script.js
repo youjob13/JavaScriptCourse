@@ -28,9 +28,9 @@ console.log('Расходы за месяц: ' + getExpensesMonth() + ' руб.'
 console.log(addExpenses.toLowerCase().split([,[]]));
 
 function getAccumulatedMonth() {
-    return accumulatedMonth = money - amount1 - amount2;
+    return money - amount1 - amount2;
 }
-getAccumulatedMonth();
+accumulatedMonth = getAccumulatedMonth();
 
 function getTargetMonth() {
     return  period = Math.ceil(mission / accumulatedMonth);
