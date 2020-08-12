@@ -1,27 +1,34 @@
 //Variable declaration
-const arr = ['37','440','113','149','3','277','2'];
 let k = 0;
 let m = 0;
+let arr2 = [];
+let num = 100;
 
 //Task 1
-for (let i = 0; i < 7; i++) {
-    if(arr[i].slice(0,1) == 2 || arr[i].slice(0,1) == 4) {
-        console.log(arr[i]);
-    }
-}
+let arr = ["127", "440", "113", "49", "3", "277", "2"];
+
+arr.filter((item) => {
+  if (item.startsWith("2") || item.startsWith("4")) {
+    console.log(item);
+  }
+});
 
 //Task 2
-for (let i = 0; i < 7; i++) {
-    if (arr[i] <= 100) {
-        for (let j = 1; j <= arr[i]; j++) {
-            k = +arr[i] % j;
-            if (k === 0) {
-                m++;
-            }
-        }
-        if (m === 2) {
-            console.log(arr[i] + ' Делители этого числа: 1 и ' + arr[i]);
-        }
-        m = 0;
+while (num !== 0) {
+  arr2.push(num--);
+}
+
+for (let i = 0; i <= arr2.length; i++) {
+  if (arr2[i] <= 100) {
+    for (let j = 1; j <= arr2[i]; j++) {
+      k = +arr2[i] % j;
+      if (k === 0) {
+        m++;
+      }
     }
+    if (m === 2) {
+      console.log(arr2[i] + " Делители этого числа: 1 и " + arr2[i]);
+    }
+    m = 0;
+  }
 }
