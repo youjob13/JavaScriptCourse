@@ -1,0 +1,12 @@
+body {
+    background-color: khaki;
+    color: darkslategray;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-family: sans-serif;
+    font-size: 55px;
+    margin-top: 250px;
+    text-align: center;
+}
