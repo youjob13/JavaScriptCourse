@@ -13,9 +13,12 @@ const income = 'Стипендия',
       deposit = confirm('Есть ли у вас депозит в банке?');
 const mission = 100000;
 
-do {
-    money = prompt('Ваш ежемесячный доход?');
-} while (!isNumber(money));
+const start = function() {
+    do {
+        money = prompt('Ваш ежемесячный доход?');
+    } while (!isNumber(money));
+}
+start();
 
 function showTypeOf(data) {
     console.log(typeof (data));
@@ -26,7 +29,7 @@ showTypeOf(deposit);
 
 console.log(addExpenses.toLowerCase().split([,[]]));
 
-let getExpensesMonth = function() {
+const getExpensesMonth = function() {
     let sum = 0;
     let amount = 0;
     for (let i = 0; i < 2; i++) {
@@ -40,7 +43,7 @@ let getExpensesMonth = function() {
     console.log(expenses);
     return sum;
 }
-let expensesAmount = getExpensesMonth();
+const expensesAmount = getExpensesMonth();
 
 console.log('Расходы за месяц: ' + expensesAmount + ' руб.');
 
