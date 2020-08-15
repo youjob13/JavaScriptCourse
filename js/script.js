@@ -14,7 +14,8 @@ function days() {
 
 week.forEach(function (item, i, week) {
     days();
-    if (i > 4) {
+    if (item == 'Суббота' || item =='Воскресенье') {
+        day[i].classList.add('italic');
         day[i].textContent = week[i];
     } else {
         day[i].textContent = week[i];
