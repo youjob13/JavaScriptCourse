@@ -1,20 +1,22 @@
-const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-let day = document.getElementsByClassName('weeks');
-let todayDay = new Date();
-// textContent не подошел т.к. выводит чистый текст не преобразуя команды italics() и bold()
+'use strict';
+const week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+const day = document.getElementsByClassName('weeks');
+const todayDay = new Date();
+
 function days() {
-    for (let i = 0; i < week.length; i++) {
+    week.forEach(function (item, i, week) {
         if (i === todayDay.getDay()) {
-            day[i].innerHTML = week[i].bold().italics();
+            day[i - 1].classList.add('today');
+            day[i].classList.remove('today');
         }
-    }
+    });
 }
 
-for (let i = 0; i < week.length; i++) {
+week.forEach(function (item, i, week) {
     days();
     if (i > 4) {
-        day[i].innerHTML = week[i].italics();
+        day[i].textContent = week[i];
     } else {
-        day[i].innerHTML = week[i];
+        day[i].textContent = week[i];
     }
-}
+});

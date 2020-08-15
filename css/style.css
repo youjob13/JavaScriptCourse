@@ -15,3 +15,9 @@ h1 {
 li {
     font-size: 30px;
 }
+.sunday, .saturday {
+    font-style: italic;
+}
+.today {
+    font-weight: 700;
+}
