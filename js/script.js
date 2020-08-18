@@ -53,21 +53,21 @@ let appData = {
     asking: function () {
 
         if (confirm('Есть ли у вас источник дополнительного заработка?')) {
-            let itemIncome = prompt('Какой у вас источник дополнительного заработка?', 'Стипендия');
-            while (!isString(itemIncome)) {
+            let itemIncome;
+            do {
                 itemIncome = prompt('Какой у вас источник дополнительного заработка?', 'Стипендия');
-            }
-            let cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
-            while (!isNumber(cashIncome)) {
+            } while (!isString(itemIncome));
+            let cashIncome;
+            do {
                 cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
-            }
+            } while (!isNumber(cashIncome));
             appData.income[itemIncome] = cashIncome;
         }
 
-        let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
-        while (!isString(addExpenses)) {
+        let addExpenses;
+        do {
             addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
-        }
+        } while (!isString(addExpenses));
         appData.addExpenses = addExpenses.toLowerCase().split([, []]);
         for (let i = 0; i < appData.addExpenses.length; i++) {
             let re = appData.addExpenses[i].trim().slice(0, 1);
@@ -77,15 +77,16 @@ let appData = {
         let expensesIndex,
             amount = 0;
         for (let i = 0; i < 2; i++) {
+            do {
             expensesIndex = prompt("Введите обязательную статью расходов?");
+            } while (!isString(expensesIndex));
             if (expensesIndex == "") {
                 expensesIndex = [i + 1];
             }
             console.log(expensesIndex);
-            amount = prompt("Во сколько это обойдется?");
-            while (!isNumber(amount)) {
+            do {
                 amount = prompt("Во сколько это обойдется?");
-            }
+            } while (!isNumber(amount));
             appData.expenses[expensesIndex] = amount;
             console.log(typeof amount);
         }
@@ -104,14 +105,12 @@ let appData = {
     },
     getInfoDeposit: function () {
         if (appData.deposit) {
-            appData.percentDeposit = prompt('Какой годовой процент?', 10);
-            while (!isNumber(appData.percentDeposit)) {
+            do {
                 appData.percentDeposit = prompt('Какой годовой процент?');
-            }
-            appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
-            while (!isNumber(appData.moneyDeposit)) {
+            } while (!isNumber(appData.percentDeposit));
+            do {
                 appData.moneyDeposit = prompt('Какая сумма заложена?');
-            }
+            } while (!isNumber(appData.moneyDeposit));
         }
     },
     calcSavedMoney: function () {
