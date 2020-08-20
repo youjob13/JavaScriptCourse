@@ -7,7 +7,9 @@ booksCollect.prepend(books[1]);
 booksCollect.append(books[2]);
 books[4].insertAdjacentElement('afterend', books[3]);
 //2
-document.body.style.background = 'url(./image/open_book.jpg)';
+document.body.style.background = 'url(./image/you-dont-know-js.jpg)';
+document.body.style.backgroundSize = 'cover';
+document.body.style.backgroundRepeat = 'no-repeat';
 //3
 title[4].textContent = 'Книга 3. this и Прототипы Объектов';
 //4
