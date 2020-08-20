@@ -39,10 +39,18 @@ function fixHours(num) {
 }
 
 function addEnd(num) {
-  if (num === 3 || num === 7) {
-    return "а";
+  if (num === 'август' || num === 'март') {
+    return num + "а";
   } else {
-    return "я";
+    return num.slice(0, num.length - 1) + 'я';
+  }
+}
+
+function addNull(num) {
+  if (num < 10) {
+    return '0' + num;
+  } else {
+    return num;
   }
 }
 
@@ -59,7 +67,7 @@ document.body.append(str1, str2);
 
 function getNum() {
   const dayValue = new Date();
-
+  console.log(dayValue.toLocaleString("ru", optionsMonth));
   //A
   str1.textContent =
     "Сегодня " +
@@ -68,16 +76,15 @@ function getNum() {
     ", " +
     dayValue.getDate() +
     " " +
-    dayValue.toLocaleString("ru", optionsMonth) +
-    addEnd(dayValue.getMonth()) +
+    addEnd(dayValue.toLocaleString("ru", optionsMonth)) +
     " " +
     dayValue.getFullYear() +
     " года, " +
-    dayValue.getHours() +
+    addNull(dayValue.getHours()) +
     fixHours(dayValue.getHours()) +
-    dayValue.getMinutes() +
+    addNull(dayValue.getMinutes()) +
     fixMinutes(dayValue.getMinutes()) +
-    dayValue.getSeconds() +
+    addNull(dayValue.getSeconds()) +
     fixSeconds(dayValue.getSeconds());
 
   //B
@@ -88,4 +95,3 @@ function getNum() {
 }
 
 const timerId = window.setInterval(getNum, 1000);
-
