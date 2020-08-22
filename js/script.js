@@ -42,7 +42,7 @@ const render = function () {
 
         btnTodoDelete.addEventListener('click', function () {
             todoData.pop(item);
-            localStorage.removeItem(i);
+            localStorage.removeItem('todoData');
             render();
         });
         console.log(todoData);
@@ -66,4 +66,4 @@ todoControl.addEventListener('submit', function (event) {
         headerInput.value = null;
     }
 });
-// render();
+render();
