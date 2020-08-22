@@ -18,8 +18,10 @@ let start = document.getElementById("start"),
     targetMonthValue = document.querySelector(".target_month-value"),
     salaryAmount = document.querySelector(".salary-amount"),
     incomeTitle = document.querySelector(".income-title"),
+    incomeAmount = document.querySelector('.income-amount'),
     incomeItems = document.querySelectorAll(".income-items"),
     expensesTitle = document.querySelector(".expenses-title"),
+    expensesAmount = document.querySelector('.expenses-amount'),
     expensesItems = document.querySelectorAll('.expenses-items'),
     additionalExpenses = document.querySelector(".additional_expenses-item"),
     targetAmount = document.querySelector(".target-amount"),
@@ -51,6 +53,7 @@ let appData = {
         appData.budget = parseFloat(salaryAmount.value);
 
 
+        appData.checkInputNum();
         appData.getExpenses();
         appData.getIncome();
         appData.getExpensesMonth();
@@ -69,7 +72,7 @@ let appData = {
         additionalIncomeValue.value = appData.addIncome.join(', ');
         targetMonthValue.value = Math.ceil(appData.getTargetMonth());
         incomePeriodValue.value = appData.calcPeriod();
-        periodSelect.addEventListener('input', function() {
+        periodSelect.addEventListener('input', function () {
             incomePeriodValue.value = appData.calcPeriod();
         });
 
@@ -162,18 +165,50 @@ let appData = {
     calcPeriod: function () {
         return appData.budgetMonth * periodSelect.value;
     },
+    checkInputNum: function () {
+        if (!isNumber(targetAmount.value) || !isNumber(incomeAmount.value) || !isNumber(expensesAmount.value) || !isNumber(salaryAmount.value)) {
+            alert('В поля "Сумма" нужно вводить число!');
+            incomeAmount.value = null;
+            expensesAmount.value = null;
+        }
+    },
+    checkInputStr: function() {
+        if (isString(incomeTitle.value) || isString(additionalIncomeItem.value) || isString(expensesTitle.value)) {
+            alert('В поля "Сумма" вводить число!');
+            targetAmount.value = null;
+            incomeTitle.value = null;
+            additionalIncomeItem.value = null;
+            expensesTitle.value = null;
+        }
+    },
 };
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
-start.addEventListener('click', function() {
-    if (salaryAmount.value.trim() === '') {
-        return;
+// start.addEventListener('click', function () {
+//     if (!isString(incomeTitle.value) || !isString(additionalIncomeItem.value) || !isString(expensesTitle.value)) {
+//         alert('В поля "Сумма" вводить число!');
+//         targetAmount.value = null;
+//         incomeTitle.value = null;
+//         additionalIncomeItem.value = null;
+//         expensesTitle.value = null;
+//     }
+// })
+start.addEventListener('click', function () {
+    if (!isNumber(salaryAmount.value)) {
+        alert('В поля "Сумма" нужно вводить число!');
+        salaryAmount.value = null;
     } else {
         appData.start();
     }
-    
-});
+})
+// start.addEventListener('click', function() {
+//     if (|| !isNumber(incomeAmount.value) || !isNumber(expensesAmount.value) || !isNumber(salaryAmount.value)) {
+//         alert('В поля "Сумма" нужно вводить число!');
+//         incomeAmount.value = null;
+//         expensesAmount.value = null;
+//     }
+// });
 
 periodSelect.addEventListener('input', function () {
     periodAmount.textContent = periodSelect.value;
