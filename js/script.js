@@ -6,6 +6,9 @@ const todoControl = document.querySelector('.todo-control'),
     todoCompleted = document.querySelector('.todo-completed'),
     p = document.querySelector('#hel');
 const todoData = [];
+if (todoData) {
+    
+}
 
 const render = function () {
     todoList.textContent = '';
@@ -13,10 +16,10 @@ const render = function () {
    
     todoData.forEach(function (item,i) {
         
-    localStorage.setItem(i,item.value);   
+       
         const li = document.createElement('li');
         li.classList.add('todo-item');
-        li.innerHTML = '<span class="text-todo">' + localStorage.getItem(i) + '</span>' +
+        li.innerHTML = '<span class="text-todo">' + item.value + '</span>' +
             '<div class="todo-buttons">' +
             '<button class="todo-remove"></button>' +
             '<button class="todo-complete"></button>' +
@@ -45,7 +48,7 @@ const render = function () {
             render();
         });
         console.log(todoData);
-
+        localStorage.setItem(i, JSON.stringify(item.value));
     });
     
 };
