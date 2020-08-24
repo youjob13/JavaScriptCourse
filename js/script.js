@@ -42,7 +42,6 @@ function blockInput() {
   start.parentNode.removeChild(start);
   const cancel = document.createElement('button');
   cancel.getElementById('cancel');
-  
 }
 const appData = {
   income: {},
