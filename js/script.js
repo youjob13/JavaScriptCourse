@@ -95,7 +95,7 @@ const appData = {
     
     incomePlus.style.display = "block";
     expensesPlus.style.display = "block";
-    this.addIncomeBlock();
+    
     
   },
   start: function () {
