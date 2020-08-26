@@ -51,7 +51,7 @@ const appData = {
   addIncome: [],
   expenses: {},
   addExpenses: [],
-  deposit: true,
+  deposit = true,
   percentDeposit: 0,
   moneyDeposit: 0,
   budget: 0,
