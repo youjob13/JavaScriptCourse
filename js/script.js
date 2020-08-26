@@ -250,7 +250,6 @@ AppData.prototype.calcPeriod = function () {
 
 const appData = new AppData();
 
-console.log(appData);
 
 appData.eventsListeners();
 
