@@ -25,6 +25,7 @@ let start = document.getElementById("start"),
   expensesAmount = document.querySelector(".expenses-amount"),
   expensesTitle = document.querySelector(".expenses-title"),
   periodAmount = document.querySelector(".period-amount"),
+  incomeAmount = document.querySelector('.income-amount'),
   cancel = document.getElementById("cancel");
 
 const isNumber = function (n) {
@@ -222,7 +223,7 @@ incomePlus.addEventListener("click", appData.addIncomeBlock);
 start.addEventListener("click", function () {
   if (!isNumber(salaryAmount.value)) {
     alert('Заполните поле "Месячный доход"');
-    salaryAmount.value = null;
+    salaryAmount.value = '';
   } else {
     appData.start.call(appData);
   }
@@ -244,4 +245,25 @@ cancel.addEventListener("click", function () {
 
 periodSelect.addEventListener("input", function () {
   periodAmount.textContent = periodSelect.value;
+});
+
+incomeAmount.addEventListener('input', function() {
+  if (!isNumber(incomeAmount.value)) {
+    incomeAmount.value = '';
+  }
+});
+expensesAmount.addEventListener('input', function() {
+  if (!isNumber(expensesAmount.value)) {
+    expensesAmount.value = '';
+  }
+});
+targetAmount.addEventListener('input',function() {
+  if (!isNumber(targetAmount.value)) {
+    targetAmount.value = '';
+  }
+});
+salaryAmount.addEventListener('input',function(){
+  if (!isNumber(salaryAmount.value)) {
+    salaryAmount.value = '';
+  }
 });
