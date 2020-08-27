@@ -9,7 +9,9 @@ const isString = function (k) {
 
 const checkString = /[^А-ЯЁ,\s.]/i;
 
-let start = document.getElementById("start"),
+let incomeItems = document.querySelectorAll(".income-items"),
+    expensesItems = document.querySelectorAll(".expenses-items");
+const start = document.getElementById("start"),
     btnPlus = document.getElementsByTagName("button"),
     incomePlus = btnPlus[0],
     expensesPlus = btnPlus[1],
@@ -25,8 +27,6 @@ let start = document.getElementById("start"),
     targetMonthValue = document.querySelector(".target_month-value"),
     salaryAmount = document.querySelector(".salary-amount"),
     incomeTitle = document.querySelector(".income-title"),
-    incomeItems = document.querySelectorAll(".income-items"),
-    expensesItems = document.querySelectorAll(".expenses-items"),
     additionalExpenses = document.querySelector(".additional_expenses-item"),
     targetAmount = document.querySelector(".target-amount"),
     periodSelect = document.querySelector(".period-select"),
