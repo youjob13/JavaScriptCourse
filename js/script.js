@@ -136,13 +136,9 @@ const appData = {
     incomeItems.forEach(function (item) {
       let itemIncome = item.querySelector(".income-title").value;
       let cashIncome = item.querySelector(".income-amount").value;
-      if (!isNumber(cashIncome)) {
-        alert('В поля "Сумма" вводить только числа!');
-      } else if (checkString.test(itemIncome)) {
-        alert('В поля "Наименование" вводить только кирилицу!');
-      } else {
+      
         itThis.income[itemIncome] = cashIncome;
-      }
+      
     });
   },
 
@@ -166,11 +162,9 @@ const appData = {
     const itThis = this;
     additionalIncomeItem.forEach(function (item) {
       const itemValue = item.value.trim();
-      if (checkString.test(itemValue)) {
-        alert('В поля "Наименование" вводить только кирилицу!');
-      } else {
+      
         itThis.addIncome.push(itemValue);
-      }
+      
     });
   },
 
@@ -179,13 +173,9 @@ const appData = {
     expensesItems.forEach(function (item) {
       const itemExpenses = item.querySelector(".expenses-title").value;
       const cashExpenses = item.querySelector(".expenses-amount").value;
-      if (!isNumber(cashExpenses)) {
-        alert('В поля "Сумма" вводить только числа!');
-      } else if (checkString.test(itemExpenses)) {
-        alert('В поля "Наименование" вводить только кирилицу!');
-      } else {
+     
         itThis.expenses[itemExpenses] = cashExpenses;
-      }
+      
     });
   },
   getExpensesMonth: function () {
