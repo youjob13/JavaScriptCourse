@@ -15,13 +15,14 @@ class DomElement {
 }
 
 DomElement.prototype.created = function () {
-  const block =
-    this.selector.trim().slice(0, 1) == "."
-      ? document.createElement("div")
-      : this.selector.trim().slice(0, 1) == "#"
-        ? document.createElement("p")
-        : alert("не то");
-  block.classList.add("block");
+  let block;
+    this.selector.trim().slice(0, 1) == "."? 
+    block = document.createElement("div"): 
+    this.selector.trim().slice(0, 1) == "#"? 
+    block = document.createElement("p"):
+    alert("не подходит");
+  (this.selector.charAt(0) === '.') ? block.setAttribute('class', this.selector.slice(1)) : block.setAttribute('id', this.selector.slice(1));
+
   block.textContent = "Покушал, набрался сил";
   block.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}; font-size: ${this.fontSize};`;
   document.body.append(block);
