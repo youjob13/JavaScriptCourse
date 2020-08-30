@@ -199,13 +199,18 @@ class AppData {
     periodSelect.value = 1;
     periodAmount.textContent = 1;
 
+    depositBank.style.display = "none";
+    depositAmount.style.display = "none";
+    depositPercent.style.display = "none";
+    depositCheck.checked = false;
+
     incomePlus.style.display = "block";
     expensesPlus.style.display = "block";
   }
-  
+
   getInfoDeposit() {
-    if (this.deposit) {      
-      if (depositBank.value === 'other') {
+    if (this.deposit) {
+      if (depositBank.value === "other") {
         this.percentDeposit = depositPercent.value / 100;
       } else {
         this.percentDeposit = depositPercent.value;
@@ -217,9 +222,11 @@ class AppData {
   changePercent() {
     const valueSelect = this.value;
     if (valueSelect === "other") {
+      depositPercent.value = "";
       depositPercent.style.display = "inline-block";
       depositPercent.removeAttribute("disabled", "disabled");
     } else {
+      depositPercent.style.display = "none";
       depositPercent.value = valueSelect;
     }
   }
@@ -234,7 +241,7 @@ class AppData {
       depositBank.style.display = "none";
       depositAmount.style.display = "none";
       depositBank.value = 0;
-      depositPercent.value = '';
+      depositPercent.value = "";
       depositAmount.value = "";
       this.deposit = false;
       depositBank.removeEventListener("change", this.changePercent);
@@ -273,11 +280,14 @@ class AppData {
 
     depositCheck.addEventListener("change", this.depositHandler.bind(this));
 
-
     depositPercent.addEventListener("input", () => {
-      if (!isNumber(depositPercent.value) ||(depositPercent.value < 0 || depositPercent.value > 100)) {
+      if (
+        !isNumber(depositPercent.value) ||
+        depositPercent.value < 0 ||
+        depositPercent.value > 100
+      ) {
         alert("Введите число от 0 до 100");
-        depositPercent.value = '';
+        depositPercent.value = "";
       }
     });
 
