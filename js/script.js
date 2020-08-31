@@ -82,7 +82,7 @@ const render = () => {
         user.append(deleteBtn);
 
         deleteBtn.addEventListener('click', () => {
-            database.pop(item);
+            delete database[i];
             localStorage.removeItem('database');
             welcome.textContent = 'Привет аноним';
             render();
