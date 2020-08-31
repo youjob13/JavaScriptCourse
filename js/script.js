@@ -14,52 +14,54 @@ const checkTime = (time) => {
     }
 };
 
-const dateToday = () => {
-    let monthLength = regDate.toLocaleString("ru", optionsMonth).length;
-    let today =
-        regDate.getDate() +
-        " " +
-        regDate.toLocaleString("ru", optionsMonth) +
-        " " +
-        regDate.getFullYear() +
-        " г. " +
-        checkTime(regDate.getHours()) +
-        ":" +
-        checkTime(regDate.getMinutes()) +
-        ":" +
-        checkTime(regDate.getSeconds());
-    return today;
+const checkMonth = (value) => {
+    if (value === 'август' || value === 'март') {
+        return value + 'а';
+    } else {
+        return value.slice(0, -1) + 'я';
+    }
 };
 
-
-const regDate = new Date();
 const database = localStorage['database'] ? JSON.parse(localStorage['database']) : [];
 
-
 const registration = () => {
-    const name = prompt(
-        "Введите через пробел Имя и Фамилию пользователя",
-        "Адиль Жалелов"
-    );
+    const regDate = new Date();
 
-    const firstName = name.split(" ");
-    const login = prompt("Придумайте логин", "YouJOB");
-    const password = prompt("Придумайте пароль", "12345");
+    const name = prompt("Введите через пробел Имя и Фамилию пользователя", "Адиль Жалелов");
+    const names = name.split(" ");
 
     const usersAcc = {
-        firstName: firstName[0],
-        lastName: firstName[1],
-        login,
-        password,
-        date: dateToday(),
+        firstName: names[0],
+        lastName: names[1],
+        login: prompt("Придумайте логин", "YouJOB"),
+        password: prompt("Придумайте пароль", "12345"),
+        date: regDate.getDate() +
+            " " +
+            checkMonth(regDate.toLocaleString("ru", optionsMonth)) +
+            " " +
+            regDate.getFullYear() +
+            " г. " +
+            checkTime(regDate.getHours()) +
+            ":" +
+            checkTime(regDate.getMinutes()) +
+            ":" +
+            checkTime(regDate.getSeconds()),
     };
-    database.push(usersAcc);
 
-    const user = document.createElement("li");
-    user.textContent = usersAcc.firstName + ' ' + usersAcc.lastName + ' ' + usersAcc.date;
-    usersList.append(user);
+    database.push(usersAcc);
+    render();
     localStorage['database'] = JSON.stringify(database);
 
 };
 
+const render = () => {
+    usersList.textContent = ''
+    database.forEach((item, i, arr) => {
+        const user = document.createElement("li");
+        user.textContent = `Имя: ${arr[i].firstName}, Фамилия: ${arr[i].lastName}, Дата регистрации: ${arr[i].date}`;
+        usersList.append(user);
+    });
+};
+
+render();
 signUpBtn.addEventListener("click", registration);
