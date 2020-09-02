@@ -56,33 +56,41 @@ window.addEventListener("DOMContentLoaded", function () {
       menuList = menu.querySelectorAll("li"),
       handlerMenu = () => menu.classList.toggle("active-menu");
 
-    const btn = document.querySelector("a");
-// scroll
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      document.querySelector("#service-block").scrollIntoView({
-         block: "center",
-         behavior: "smooth",
-      });
-    });
-    menuList.forEach((item) => {
-      item.addEventListener("click", (e) => {
-        e.preventDefault();
-        let startStr = item.querySelector('a').getAttribute('href');
-        
-        document.querySelector(`${startStr}`).scrollIntoView({
-          block: "center",
-          behavior: "smooth",
-        });
-      });
-    });
-
     menuBtn.addEventListener("click", handlerMenu);
     btnClose.addEventListener("click", handlerMenu);
     menuList.forEach((item) => item.addEventListener("click", handlerMenu));
   };
 
   toggleMenu();
+
+  // scroll
+  const scrollFunc = (idBlock) => {
+    document.querySelector(`${idBlock}`).scrollIntoView({
+      block: "center",
+      behavior: "smooth",
+    });
+  };
+
+  const scrollToBlock = () => {
+    const btnScroll = document.querySelector("a"),
+      menuList = document.querySelectorAll("menu li");
+
+    btnScroll.addEventListener("click", (event) => {
+      event.preventDefault();
+      const item = document.querySelector("a").getAttribute("href");
+      scrollFunc(item);
+    });
+
+    menuList.forEach((item) => {
+      item.addEventListener("click", (event) => {
+        event.preventDefault();
+        const startStr = item.querySelector("a").getAttribute("href");
+        scrollFunc(startStr);
+      });
+    });
+  };
+
+  scrollToBlock();
 
   //popup
   const togglePopUp = () => {
