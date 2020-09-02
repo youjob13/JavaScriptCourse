@@ -68,9 +68,34 @@ window.addEventListener("DOMContentLoaded", () => {
     const togglePopUp = () => {
         const popUpBtn = document.querySelectorAll(".popup-btn"),
             popUp = document.querySelector(".popup");
+        let animateIdOpen, animateIdClose;
+        let count = 0;
+
+        const animateOpen = () => {
+            animateIdOpen = requestAnimationFrame(animateOpen);
+            count += 0.05;
+            if (count <= 1) {
+                console.log(count);
+
+                popUp.style.opacity = count;
+            } else {
+                cancelAnimationFrame(animateIdOpen);
+            }
+        };
+        const animateClose = () => {
+            animateIdClose = requestAnimationFrame(animateClose);
+            count -= 0.05;
+            if (count >= 0) {
+                popUp.style.opacity = count;
+            } else {
+                cancelAnimationFrame(animateIdClose);
+                popUp.style.display = "none";
+            }
+        };
 
         popUpBtn.forEach(item => {
             item.addEventListener("click", () => {
+                animateIdOpen = requestAnimationFrame(animateOpen);
                 popUp.style.display = "block";
             });
         });
@@ -78,12 +103,11 @@ window.addEventListener("DOMContentLoaded", () => {
         popUp.addEventListener('click', event => {
             let target = event.target;
             if (target.classList.contains('popup-close')) {
-                popUp.style.display = "none";
+                animateIdClose = requestAnimationFrame(animateClose);
             } else {
                 target = target.closest('.popup-content');
-
                 if (!target) {
-                    popUp.style.display = "none";
+                    animateIdClose = requestAnimationFrame(animateClose);
                 }
             }
 
