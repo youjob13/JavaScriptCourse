@@ -58,15 +58,22 @@ window.addEventListener("DOMContentLoaded", function () {
 
     const btn = document.querySelector("a");
 // scroll
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
       document.querySelector("#service-block").scrollIntoView({
          block: "center",
          behavior: "smooth",
       });
     });
     menuList.forEach((item) => {
-      item.addEventListener("click", () => {
-        //code
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        let startStr = item.querySelector('a').getAttribute('href');
+        
+        document.querySelector(`${startStr}`).scrollIntoView({
+          block: "center",
+          behavior: "smooth",
+        });
       });
     });
 
