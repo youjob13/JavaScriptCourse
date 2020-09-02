@@ -1,5 +1,6 @@
 const btn = document.querySelector(".button"),
-  box = document.querySelector(".box-block");
+  box = document.querySelector(".box-block"),
+  btnClose = document.querySelector(".button-close");
 let count = -75,
   count2 = 0,
   boxAnimateId,
@@ -31,4 +32,10 @@ btn.addEventListener("click", () => {
     animate = true;
     btn.textContent = "Продолжить загрузку";
   }
+});
+btnClose.addEventListener("click", () => {
+  box.style.opacity = "0";
+  btn.textContent = "Начать загрузку";
+  cancelAnimationFrame(boxAnimateId);
+  (count = -75), (count2 = 0), (animate = true);
 });
