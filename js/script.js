@@ -1,6 +1,6 @@
 const btn = document.querySelector(".button"),
   box = document.querySelector(".box-block");
-let count = 0,
+let count = -75,
   count2 = 0,
   boxAnimateId,
   animate = true;
@@ -23,6 +23,8 @@ btn.addEventListener("click", () => {
   if (animate) {
     boxAnimateId = requestAnimationFrame(boxAnimate);
     animate = false;
+    box.style.opacity = "1";
+
     btn.textContent = "Остановить загрузку";
   } else {
     cancelAnimationFrame(boxAnimateId);
