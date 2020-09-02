@@ -33,7 +33,7 @@ h1 {
     height: 25px;
     background-color:rgb(24, 173, 56);
 }
-.button {
+.button, .button-close {
     cursor: pointer;
     border-radius: 3px;
     color: #fff;
@@ -44,10 +44,11 @@ h1 {
     border:2px solid rgb(195, 218, 92);
     display: block;
     text-align: center;
-    margin: 100px auto;
+    margin: 50px auto;
     width: 340px;
     height: 60px;
 }
-.button:focus {
+.button:focus,
+.button-close:focus {
     outline:none;
 }
