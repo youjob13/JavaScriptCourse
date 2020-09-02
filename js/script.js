@@ -77,8 +77,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
     btnScroll.addEventListener("click", (event) => {
       event.preventDefault();
-      const item = document.querySelector("a").getAttribute("href");
-      scrollFunc(item);
+      const startStr = document.querySelector("a").getAttribute("href");
+      scrollFunc(startStr);
     });
 
     menuList.forEach((item) => {
