@@ -99,7 +99,7 @@ const render = () => {
     user.append(deleteBtn);
 
     deleteBtn.addEventListener("click", () => {
-      database.splice(0, 1);
+      database.splice(i, 1);
       localStorage.removeItem("database");
       welcome.textContent = "Привет аноним";
       render();
