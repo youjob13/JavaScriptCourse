@@ -57,7 +57,7 @@ window.addEventListener("DOMContentLoaded", function () {
       handlerMenu = () => menu.classList.toggle("active-menu");
 
     const btn = document.querySelector("a");
-
+// scroll
     btn.addEventListener("click", () => {
       document.querySelector("#service-block").scrollIntoView({
          block: "center",
