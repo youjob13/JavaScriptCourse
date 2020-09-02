@@ -102,7 +102,7 @@ window.addEventListener("DOMContentLoaded", () => {
             item.addEventListener("click", () => {
                 popUp.style.display = "block";
                 popUp.style.opacity = "1";
-                if (document.documentElement.clientWidth > 768) {
+                if (window.innerWidth > 768) {
                     popUp.style.opacity = "0";
                     animateIdOpen = requestAnimationFrame(animateOpen);
                 }
@@ -110,7 +110,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
 
         popUpClose.addEventListener("click", () => {
-            if (document.documentElement.clientWidth > 768) {
+            if (window.innerWidth > 768) {
                 animateIdClose = requestAnimationFrame(animateClose);
             } else {
                 popUp.style.display = "none";
