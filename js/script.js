@@ -65,17 +65,28 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // scroll
   const scrollFunc = (idBlock) => {
-    document.querySelector(`${idBlock}`).scrollIntoView({ block: "center", behavior: "smooth" });
+    document.querySelector(`${idBlock}`).scrollIntoView({
+      block: "center",
+      behavior: "smooth",
+    });
   };
 
   const scrollToBlock = () => {
-    document.addEventListener("click", (event) => {
-      let target = event.target;
-      if (target.matches("a") || target.closest("a")) {
+    const btnScroll = document.querySelector("a"),
+      menuList = document.querySelectorAll("menu li");
+
+    btnScroll.addEventListener("click", (event) => {
+      event.preventDefault();
+      const startStr = document.querySelector("a").getAttribute("href");
+      scrollFunc(startStr);
+    });
+
+    menuList.forEach((item) => {
+      item.addEventListener("click", (event) => {
         event.preventDefault();
-        const startStr = document.querySelector("a").getAttribute("href");
+        const startStr = item.querySelector("a").getAttribute("href");
         scrollFunc(startStr);
-      }
+      });
     });
   };
 
