@@ -32,9 +32,14 @@ const registration = () => {
     name = prompt(
       "Введите через пробел Имя и Фамилию пользователя",
       "Адиль Жалелов"
-    ),
-    names = name.split(" ");
+    );
+      
   let login, password;
+  if (name === null) {
+    return;
+  }
+  names = name.split(" ");
+
   do {
     login = prompt("Придумайте логин", "YouJOB");
   } while (login === null || login.trim() === "");
