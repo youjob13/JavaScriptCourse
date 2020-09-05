@@ -105,15 +105,18 @@ class Todo {
 
                 menu.addEventListener('click', () => {
                     item.value = target.closest('.todo-item').querySelector('span').textContent.trim(); //добавляем измененный текст в объект
+                    if (item.value === '') {
+                        alert('Введите что-нибудь!');
+                        target.closest('.todo-item').querySelector('span').setAttribute('contenteditable', true);
+                        return;
+                    }
                     target.closest('.todo-item').setAttribute('contenteditable', false);
                     menu.parentNode.removeChild(menu);
                     target.style.pointerEvents = !'none';
                     this.render();
                 });
             }
-
         });
-
     }
 
     handler() {
