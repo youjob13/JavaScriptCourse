@@ -16,8 +16,8 @@ const start = document.getElementById("start"),
   btnPlus = document.getElementsByTagName("button"),
   incomeTitle = document.querySelector(".income-title"),
 
-  incomePlus = btnPlus[0],
-  expensesPlus = btnPlus[1],
+  // incomePlus = btnPlus[0],
+  // expensesPlus = btnPlus[1],
   depositCheck = document.querySelector("#deposit-check"),
   additionalIncomeItem = document.querySelectorAll(".additional_income-item"),
   budgetDayValue = document.querySelector(".budget_day-value"),
@@ -87,6 +87,7 @@ class AppData {
     cancel.style.display = "block";
   }
 
+  //getAddIncome + getAddExpenses
   getAddIncExp() {
     const count = (item) => {
       const startStr = item.className.split("_")[1].split("-")[0];
@@ -104,10 +105,9 @@ class AppData {
     additionalIncomeItem.forEach(count);
     additionalExpensesItem.forEach(count);
   }
-
+  // getIncome + getExpenses
   getIncExp() {
     const count = (item) => {
-      console.log(item);
       const startStr = item.className.split("-")[0];
       const itemTitle = item.querySelector(`.${startStr}-title`).value;
       const itemAmount = item.querySelector(`.${startStr}-amount`).value;
@@ -118,55 +118,21 @@ class AppData {
     incomeItems.forEach(count);
     expensesItems.forEach(count);
   }
-  addIncomeBlock() {
-    const cloneIncomeItem = incomeItems[0].cloneNode(true);
-
-    incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
-    incomeItems = document.querySelectorAll(".income-items");
-    console.log(incomeItems);
-
-    if (incomeItems.length === 3) {
-      incomePlus.style.display = "none";
+  //addExpensesBlock + addIncomeBlock
+  addExpIncBlock(items, index) {
+    const cloneItem = items[0].cloneNode(true);
+    const startStr = items.item(0).className;
+    items[0].parentNode.append(cloneItem, btnPlus[index]);
+    items = document.querySelectorAll(`.${startStr}`);
+    if (startStr === 'expenses-items') {
+      expensesItems = items;
+    } else if (startStr === 'income-items') {
+      incomeItems = items;
     }
-  }
-  addExpensesBlock(items) {
-    const cloneExpensesItem = items[0].cloneNode(true);
-    console.log(items);
-    items[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
-    items = document.querySelectorAll(".expenses-items");
-    console.log(expensesItems);
-
     if (items.length === 3) {
-      expensesPlus.style.display = "none";
+      expenses[index].style.display = "none";
     }
   }
-  // addExpIncBlock() {
-  //   const cloneItem = 
-  // }
-  //addIncExpBlock
-  // addIncExpBlock() {
-  //   const count = (item,btn) => {
-  //     console.log(item)
-  //     const startStr = item.className.split('-')[0];
-  //     let items = document.querySelectorAll(`.${startStr}-items`)
-
-  //     const cloneItem = items[0].cloneNode(true);
-  //     items[0].parentNode.insertBefore(cloneItem, btn);
-  //     items = document.querySelectorAll(`.${startStr}-items`);
-  //     if (items.length === 3) {
-  //       btn.style.display = "none";
-  //     }
-  //   };
-  //   if (expensesPlus.hasAttribute('focus')) {
-  //     console.log(expensesPlus.hasAttribute('focus'));
-  //     const btn = document.querySelector('.expenses_add');
-  //     count(...expensesItems,btn);
-  //   } else if (incomePlus.hasAttribute('focus')) {
-  //     console.log(incomePlus.hasAttribute('focus'));
-  //     const btn = document.querySelector('.income_add');
-  //     count(...incomeItems, btn);
-  //   }
-  // }
 
   getIncomeMonth() {
     for (let key in this.income) {
@@ -239,28 +205,17 @@ class AppData {
     periodSelect.value = 1;
     periodAmount.textContent = 1;
 
-    incomePlus.style.display = "block";
-    expensesPlus.style.display = "block";
+    btnPlus[0].style.display = "block";
+    btnPlus[1].style.display = "block";
   }
 
   eventsListeners() {
-    //кнопки plus_btn
-    expensesPlus.addEventListener('click', function () {
-      appData.addExpensesBlock(expensesItems);
+    btnPlus[1].addEventListener('click', function () {
+      appData.addExpIncBlock(expensesItems, 1);
     });
-    incomePlus.addEventListener('click',this.addIncomeBlock);
-    // expensesPlus.addEventListener("click", function() {
-    //   incomePlus.removeAttribute('focus', true);
-
-    //   expensesPlus.setAttribute('focus', true);
-    //   appData.addIncExpBlock();
-    // });
-    // incomePlus.addEventListener("click", function () {
-    //   expensesPlus.removeAttribute('focus', true);
-
-    //   incomePlus.setAttribute('focus', true);
-    //   appData.addIncExpBlock();
-    // });
+    btnPlus[0].addEventListener('click', function () {
+      appData.addExpIncBlock(incomeItems, 0);
+    });
 
     start.addEventListener("click", () => {
       if (!isNumber(salaryAmount.value)) {
@@ -287,8 +242,8 @@ class AppData {
       periodAmount.textContent = periodSelect.value;
     });
     this.checkStr();
-    incomePlus.addEventListener("click", this.checkStr);
-    expensesPlus.addEventListener("click", this.checkStr);
+    btnPlus[0].addEventListener("click", this.checkStr);
+    btnPlus[1].addEventListener("click", this.checkStr);
   }
   checkStr() {
     let itemsName = document.querySelectorAll(
