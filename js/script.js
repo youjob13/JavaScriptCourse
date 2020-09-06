@@ -72,20 +72,10 @@ window.addEventListener("DOMContentLoaded", function () {
   };
 
   const scrollToBlock = () => {
-    const btnScroll = document.querySelector("a"),
-      menuList = document.querySelectorAll("menu li");
-
-    btnScroll.addEventListener("click", (event) => {
-      event.preventDefault();
-      const startStr = document.querySelector("a").getAttribute("href");
-      scrollFunc(startStr);
-    });
-
-    menuList.forEach((item) => {
-      item.addEventListener("click", (event) => {
+    document.querySelectorAll('a[href="#service-block"], menu li>a').forEach((item) => {
+      item.addEventListener('click', (event) => {
         event.preventDefault();
-        const startStr = item.querySelector("a").getAttribute("href");
-        scrollFunc(startStr);
+        scrollFunc(item.getAttribute('href'));
       });
     });
   };
