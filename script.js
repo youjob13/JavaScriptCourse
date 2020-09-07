@@ -1,38 +1,25 @@
-"use strict";
-const myLesson = [
-  { lesson: 1, type: "basic", points: 2 },
-  { lesson: 2, type: "additional", points: 4 },
-  { lesson: 3, type: "basic", points: 6 },
-  { lesson: 4, type: "additional", points: 3 },
-  { lesson: 5, type: "basic", points: 4 },
-  { lesson: 6, type: "basic", points: 2 },
-  { lesson: 7, type: "additional", points: 2 },
-  { lesson: 8, type: "basic", points: 6 },
-  { lesson: 9, type: "basic", points: 4 },
-  { lesson: 10, type: "basic", points: 6 },
-  { lesson: 11, type: "additional", points: 5 },
-  { lesson: 12, type: "basic", points: 2 },
-  { lesson: 13, type: "additional", points: 2 },
-  { lesson: 14, type: "basic", points: 4 },
-  { lesson: 15, type: "additional", points: 1 },
-  { lesson: 16, type: "additional", points: 7 },
-];
 
-const newLesson = JSON.parse(JSON.stringify(myLesson));
+//task1
+const task1 = document.getElementById("task1");
+task1.innerHTML = task1.textContent.replace(/функци(я|и)?/g,(match) => `<strong>${match}</strong>`);
 
-const func = () => {
-  newLesson.forEach((item, i, arr) => {
-    if (item.type === "additional") {
-      arr.splice(i, 1);
-    }
-    //последний элемен не удаляется, знаю, думаю)
-  });
-  newLesson.forEach((item, i, arr) => {
-    if (item.type === "basic") {
-      arr[i].points /= 2;
-    }
-  });
-};
-func();
-console.log(newLesson);
-console.log(myLesson);
+//task2
+const task2 = document.getElementById('task2');
+// task2.innerHTML = task2.textContent.replace(//g)
+
+//task3
+// const task3 = task2.querySelector('p');
+// console.log(task3.textContent);
+// task3.innerHTML = task3.textContent.replace(/("\W*.*")/g, (match) => `<mark>${match}</mark>`);
+
+//task4
+// const body = document.querySelector('body');
+// body.innerHTML = body.textContent.replace(/\w{4}:\/{2}(\w*\.ru)/g, (match,val) =>`<a href="${match}">${val}</a>`);
+
+//task5
+// const body = document.querySelector('body');
+// body.innerHTML = body.textContent.replace()
+
+//task6
+const body = document.querySelector('body');
+body.innerHTML = body.textContent.replace(/\w{4}:\/{2}\w{0,3}\.{0,1}(\w*.ru)\/\w.*/g, (match, val) => `<a href="${match}">${val}</a>`);
