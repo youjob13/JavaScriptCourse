@@ -574,9 +574,8 @@
 
     <script src="plugins/validator/validator.js"></script>
     <script>
-      const valid = new Validator({
+      const validForm1 = new Validator({
       	selector: '#form1',
-      	selector: '#form2',
       	pattern: {
       		// phone: /\W+/,
       		name: /\W+/
@@ -586,17 +585,27 @@
       			['notEmpty'],
       			['pattern', 'name']
       		],
-      		'form2-name': [
-      			['notEmpty'],
-      			['pattern', 'name'],
-      		],
-      		'form2-message': [
-      			['notEmpty'],
-      			['pattern', 'name'],
-      		]
       	}
       });
-      valid.init();
+      const validForm2 = new Validator({
+          selector: '#form2',
+          pattern: {
+            // phone: /\W+/,
+            name: /\W+/
+          },
+          method: {
+            'form2-name': [
+              ['notEmpty'],
+              ['pattern', 'name'],
+            ],
+            'form2-message': [
+              ['notEmpty'],
+              ['pattern', 'name'],
+            ]
+          }
+        });
+        validForm1.init();
+        validForm2.init();
     </script>
   </body>
 </html>
