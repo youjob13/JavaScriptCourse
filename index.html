@@ -575,37 +575,37 @@
     <script src="plugins/validator/validator.js"></script>
     <script>
       const validForm1 = new Validator({
-      	selector: '#form1',
-      	pattern: {
-      		// phone: /\W+/,
-      		name: /\W+/
-      	},
-      	method: {
-      		'form1-name': [
-      			['notEmpty'],
-      			['pattern', 'name']
-      		],
-      	}
+        selector: "#form1",
+        pattern: {
+          name: /^\W+$/gi,
+        },
+        method: {
+          "form1-name": [["notEmpty"], ["pattern", "name"]],
+        },
       });
       const validForm2 = new Validator({
-          selector: '#form2',
-          pattern: {
-            // phone: /\W+/,
-            name: /\W+/
-          },
-          method: {
-            'form2-name': [
-              ['notEmpty'],
-              ['pattern', 'name'],
-            ],
-            'form2-message': [
-              ['notEmpty'],
-              ['pattern', 'name'],
-            ]
-          }
-        });
-        validForm1.init();
-        validForm2.init();
+        selector: "#form2",
+        pattern: {
+          name: /^\W+$/gi,
+        },
+        method: {
+          "form2-name": [["notEmpty"], ["pattern", "name"]],
+          "form2-message": [["notEmpty"], ["pattern", "name"]],
+        },
+      });
+      const validForm3 = new Validator({
+        selector: "#form3",
+        pattern: {
+          name: /^\W+$/gi,
+        },
+        method: {
+          "form3-name": [["notEmpty"], ["pattern", "name"]],
+        },
+      });
+
+      validForm1.init();
+      validForm2.init();
+      validForm3.init();
     </script>
   </body>
 </html>
