@@ -437,12 +437,18 @@ window.addEventListener("DOMContentLoaded", () => {
                     body[key] = val;
                 });
 
-                postData(body,
+                postData(
+                    body,
                     () => {
                         cancelAnimationFrame(animateId);
                         statusMessage.textContent = successMessage;
                         if (item.id !== 'form3') {
                             setTimeout(() => statusMessage.textContent = '', 2000)
+                        } else {
+                            const popupClose = document.querySelector('.popup-close');
+                            popupClose.addEventListener('click', () => {
+                                statusMessage.textContent = "";
+                            });
                         }
                         input.forEach(item => {
                             item.value = '';
@@ -474,3 +480,4 @@ window.addEventListener("DOMContentLoaded", () => {
     };
     sendForm();
 });
+
