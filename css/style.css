@@ -1,0 +1,40 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: cadetblue;
+}
+.block, .block2 {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.output,.input {
+    border-radius: 5px;
+    padding: 5px;
+    background-color:rgb(184, 184, 184);
+    display: inline-block;
+}
+
+.value-money {
+    padding: 2px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color:#fff;
+}
+.output-money,
+.output-money2 {
+    padding: 2px 0 0 2px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 164px;
+    height: 20px;
+    background-color:#fff;
+}
+input {
+    border-radius: 5px;
+    border:none;
+}
+input:focus {
+    outline: none;
+}
