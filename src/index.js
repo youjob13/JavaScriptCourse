@@ -7,7 +7,8 @@ elementClosest(window);
 import 'formdata-polyfill';
 import 'es6-promise';
 import 'fetch-polyfill';
-
+import "cross-browser-polyfill";
+import 'dom-node-polyfills';
 
 import countTimer from './modules/countTimer';
 import toggleMenu from './modules/toggleMenu';
