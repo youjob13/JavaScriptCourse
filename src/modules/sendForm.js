@@ -9,7 +9,7 @@ const sendForm = () => {
 
     const forms = [];
 
-    let numLength = 0;
+    let phoneValue;
 
     forms.push(form, form2, form3);
 
@@ -36,8 +36,8 @@ const sendForm = () => {
         [...input].forEach((elem) => {
             elem.addEventListener("input", () => {
                 if (elem.classList.contains("form-phone")) {
-                    elem.value = elem.value.replace(/[^0-9+]/g, "");
-                    numLength = elem.value.length;
+                    elem.value = elem.value.replace(/[^0-9+]/g, '');
+                    phoneValue = elem.value;
                 } else if (elem.classList.contains("form-email")) {
                     return;
                 } else {
@@ -48,36 +48,47 @@ const sendForm = () => {
 
         item.addEventListener("submit", (e) => {
             e.preventDefault();
-            if (numLength < 11) {
+
+            if ((phoneValue.slice(0, 1) === '+' && phoneValue.length === 12) ||
+                (phoneValue.slice(0, 1) === '8' && phoneValue.length === 11)) {
+                item.classList.remove('error');
+                item.append(statusMessage);
+                statusMessage.textContent = loadMessage;
+                const formData = new FormData(item);
+                let body = {};
+
+                formData.forEach((val, key) => {
+                    body[key] = val;
+                });
+
+                postData(body).then((response) => {
+                    if (response.status !== 200) {
+                        throw new Error('status network is not 200');
+                    }
+                    statusMessage.textContent = successMessage;
+                    if (item.id !== "form3") {
+                        setTimeout(() => (statusMessage.textContent = ""), 2000);
+                    }
+
+                    input.forEach((item) => {
+                        item.value = "";
+                    });
+                }).catch((error) => {
+                    statusMessage.textContent = errorMessage;
+                    console.error(error);
+                });
+            } else {
+                if (item.classList.contains('error')) {
+                    return;
+                }
+                console.log(e.target);
+                const prompt = document.createElement('div');
+                item.classList.add('error');
+                prompt.textContent = 'Вы ввели некорректные данные в поле "Номер телефона"';
+                prompt.style.color = '#fff';
+                item.append(prompt);
                 return;
             }
-            const input = item.querySelectorAll("input");
-            item.append(statusMessage);
-            statusMessage.textContent = loadMessage;
-            const formData = new FormData(item);
-            let body = {};
-
-            formData.forEach((val, key) => {
-                body[key] = val;
-            });
-
-            postData(body).then((response) => {
-                if (response.status !== 200) {
-                    throw new Error('status network is not 200');
-                }
-                statusMessage.textContent = successMessage;
-                if (item.id !== "form3") {
-                    setTimeout(() => (statusMessage.textContent = ""), 2000);
-                }
-
-                input.forEach((item) => {
-                    item.value = "";
-                });
-            }).catch((error) => {
-                statusMessage.textContent = errorMessage;
-                console.error(error);
-            });
-
         });
     });
 
