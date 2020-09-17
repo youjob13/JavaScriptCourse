@@ -75,13 +75,11 @@ const sendForm = () => {
                     });
                 }).catch((error) => {
                     statusMessage.textContent = errorMessage;
-                    console.error(error);
                 });
             } else {
                 if (item.classList.contains('error')) {
                     return;
                 }
-                console.log(e.target);
                 const prompt = document.createElement('div');
                 item.classList.add('error');
                 prompt.textContent = 'Вы ввели некорректные данные в поле "Номер телефона"';
