@@ -9,6 +9,7 @@ import 'es6-promise';
 import 'fetch-polyfill';
 import "cross-browser-polyfill";
 import 'dom-node-polyfills';
+import 'ie11-scroll-into-view';
 
 import countTimer from './modules/countTimer';
 import toggleMenu from './modules/toggleMenu';

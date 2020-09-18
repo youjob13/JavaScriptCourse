@@ -51,7 +51,6 @@ const sendForm = () => {
 
             if ((phoneValue.slice(0, 1) === '+' && phoneValue.length === 12) ||
                 (phoneValue.slice(0, 1) === '8' && phoneValue.length === 11)) {
-                item.classList.remove('error');
                 item.append(statusMessage);
                 statusMessage.textContent = loadMessage;
                 const formData = new FormData(item);
@@ -69,23 +68,17 @@ const sendForm = () => {
                     if (item.id !== "form3") {
                         setTimeout(() => (statusMessage.textContent = ""), 2000);
                     }
-
                     input.forEach((item) => {
                         item.value = "";
                     });
                 }).catch((error) => {
                     statusMessage.textContent = errorMessage;
+                    if (item.id !== "form3") {
+                        setTimeout(() => (statusMessage.textContent = ""), 2000);
+                    }
                 });
             } else {
-                if (item.classList.contains('error')) {
-                    return;
-                }
-                const prompt = document.createElement('div');
-                item.classList.add('error');
-                prompt.textContent = 'Вы ввели некорректные данные в поле "Номер телефона"';
-                prompt.style.color = '#fff';
-                item.append(prompt);
-                return;
+                alert('Вы ввели некорректные данные в поле "Номер телефона"');
             }
         });
     });
