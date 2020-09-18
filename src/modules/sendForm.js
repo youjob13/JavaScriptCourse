@@ -65,9 +65,7 @@ const sendForm = () => {
                         throw new Error('status network is not 200');
                     }
                     [...input].forEach(item => {
-                        if (item.classList.contains('form-phone')) {
-                            item.style.cssText = `border: none`;
-                        }
+                        item.style.cssText = `border: none`;
                     });
                     statusMessage.textContent = successMessage;
                     if (item.id !== "form3") {
@@ -78,9 +76,7 @@ const sendForm = () => {
                     });
                 }).catch((error) => {
                     [...input].forEach(item => {
-                        if (item.classList.contains('form-phone')) {
-                            item.style.cssText = `border: none`;
-                        }
+                        item.style.cssText = `border: none`;
                     });
 
                     statusMessage.textContent = errorMessage;
