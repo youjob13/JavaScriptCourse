@@ -32,10 +32,10 @@ const sendForm = () => {
             }
         });
 
-
         [...input].forEach((elem) => {
             elem.addEventListener("input", () => {
                 if (elem.classList.contains("form-phone")) {
+                    elem.style.cssText = `border:none`;
                     elem.value = elem.value.replace(/[^0-9+]/g, '');
                     phoneValue = elem.value;
                 } else if (elem.classList.contains("form-email")) {
@@ -64,9 +64,7 @@ const sendForm = () => {
                     if (response.status !== 200) {
                         throw new Error('status network is not 200');
                     }
-                    [...input].forEach(item => {
-                        item.style.cssText = `border: none`;
-                    });
+                    
                     statusMessage.textContent = successMessage;
                     if (item.id !== "form3") {
                         setTimeout(() => (statusMessage.textContent = ""), 2000);
