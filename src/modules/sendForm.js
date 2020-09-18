@@ -64,6 +64,11 @@ const sendForm = () => {
                     if (response.status !== 200) {
                         throw new Error('status network is not 200');
                     }
+                    [...input].forEach(item => {
+                        if (item.classList.contains('form-phone')) {
+                            item.style.cssText = `border: none`;
+                        }
+                    });
                     statusMessage.textContent = successMessage;
                     if (item.id !== "form3") {
                         setTimeout(() => (statusMessage.textContent = ""), 2000);
@@ -72,13 +77,23 @@ const sendForm = () => {
                         item.value = "";
                     });
                 }).catch((error) => {
+                    [...input].forEach(item => {
+                        if (item.classList.contains('form-phone')) {
+                            item.style.cssText = `border: none`;
+                        }
+                    });
+
                     statusMessage.textContent = errorMessage;
                     if (item.id !== "form3") {
                         setTimeout(() => (statusMessage.textContent = ""), 2000);
                     }
                 });
             } else {
-                alert('Вы ввели некорректные данные в поле "Номер телефона"');
+                [...input].forEach(item => {
+                    if (item.classList.contains('form-phone')) {
+                        item.style.cssText = `border: 2px solid red`;
+                    }
+                });
             }
         });
     });
