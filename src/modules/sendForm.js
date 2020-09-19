@@ -40,8 +40,10 @@ const sendForm = () => {
                     phoneValue = elem.value;
                 } else if (elem.classList.contains("form-email")) {
                     return;
+                } else if (elem.classList.contains("form-name")) {
+                  elem.value = elem.value.replace(/[^а-я\s]/gi, "");
                 } else {
-                    elem.value = elem.value.replace(/[^А-Я\s]/gi, "");
+                  elem.value = elem.value.replace(/[A-Z0-9]/gi, "");
                 }
             });
         });
