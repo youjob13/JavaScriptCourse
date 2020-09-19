@@ -33,19 +33,19 @@ const sendForm = () => {
         });
 
         [...input].forEach((elem) => {
-            elem.addEventListener("input", () => {
-                if (elem.classList.contains("form-phone")) {
-                    elem.style.cssText = `border:none`;
-                    elem.value = elem.value.replace(/[^0-9+]/g, '');
-                    phoneValue = elem.value;
-                } else if (elem.classList.contains("form-email")) {
-                    return;
-                } else if (elem.classList.contains("form-name")) {
-                  elem.value = elem.value.replace(/[^а-я\s]/gi, "");
-                } else {
-                  elem.value = elem.value.replace(/[A-Z0-9]/gi, "");
-                }
-            });
+          elem.addEventListener("input", () => {
+            if (elem.classList.contains("form-phone")) {
+              elem.style.cssText = `border:none`;
+              elem.value = elem.value.replace(/[^0-9+]/g, "");
+              phoneValue = elem.value;
+            } else if (elem.classList.contains("form-email")) {
+              return;
+            } else if (elem.classList.contains("mess")) {
+              elem.value = elem.value.replace(/[a-z0-9]/gi, "");
+            } else {
+              elem.value = elem.value.replace(/[^а-я\s]/gi, "");
+            }
+          });
         });
 
         item.addEventListener("submit", (e) => {
