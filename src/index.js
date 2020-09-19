@@ -9,7 +9,8 @@ import 'es6-promise';
 import 'fetch-polyfill';
 import "cross-browser-polyfill";
 import 'dom-node-polyfills';
-import 'ie11-scroll-into-view';
+import smoothscroll from 'smoothscroll-polyfill';
+smoothscroll.polyfill();
 
 import countTimer from './modules/countTimer';
 import toggleMenu from './modules/toggleMenu';
