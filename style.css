@@ -2,8 +2,62 @@ body {
     font-family: sans-serif;
 }
 
+.marvel {
+    width: 100%;
+}
+
+select {
+    border: none;
+    border-radius: 6px;
+}
+
+select:focus {
+    outline: none;
+}
+
+a {
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.link-name:hover {
+    padding: 2px;
+    border-radius: 2px;
+    color: black;
+    background-color: #fff;
+}
+
 .link-movies {
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
     padding: 0 30px;
+    color: #fff;
+    background-color: #333;
+}
+
+.link-movies::after {
+    content: '';
+    background-color: black;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+}
+
+#select-movies {
+    margin-bottom: 5px;
+    width: 90%;
+}
+
+.output {
+    color: black;
+    margin-left: 32%;
 }
 
 ul {
@@ -15,6 +69,7 @@ ul {
     display: inline-block;
     vertical-align: top;
     width: 70%;
+    font-size: 18px;
     margin-right: 50px;
 }
 
@@ -38,19 +93,25 @@ ul {
 
 .heroes {
     opacity: 0;
+    margin: 5px 0;
     transform: translateY(-100%);
     transition: 1s;
     animation: show 1s 1;
     animation-fill-mode: forwards;
     max-width: 800px;
     width: 100%;
-    margin: 20px auto;
     background-color: rgb(0, 0, 0);
     padding: 15px;
     border-radius: 6px;
     border: 2px solid #333
 }
 
+.heroes:hover {
+    margin: 15px 0;
+    padding: 30px;
+}
+
 li {
+    list-style-type: none;
     color: #fff;
 }
