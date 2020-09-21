@@ -1,12 +1,6 @@
 "use strict";
-const outputHeroes = document.querySelector(".output-heroes"),
-    header = document.querySelector(".link"),
+const header = document.querySelector(".link"),
     outputMovies = document.querySelector(".output-movies"),
-    selectFilter = document.getElementById("filter"),
-    btn = document.querySelector(".button"),
-    genderCheck = document.querySelectorAll(".gender-check"),
-    statusCheck = document.querySelectorAll(".status-check"),
-    selectSpecies = document.getElementById('select-species'),
     selectMovies = document.getElementById("select-movies");
 
 fetch("dbHeroes.json", {
