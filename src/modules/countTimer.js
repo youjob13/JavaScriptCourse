@@ -3,6 +3,7 @@ const countTimer = (deadline) => {
     const timerHours = document.querySelector("#timer-hours"),
         timerMinutes = document.querySelector("#timer-minutes"),
         timerSeconds = document.querySelector("#timer-seconds");
+    let interval;
 
     const getTimeRemaining = () => {
         const dateStop = new Date(deadline).getTime(),
@@ -33,15 +34,15 @@ const countTimer = (deadline) => {
         timerHours.textContent = checkTime(timer.hours);
         timerMinutes.textContent = checkTime(timer.minutes);
         timerSeconds.textContent = checkTime(timer.seconds);
-        if (timer.timeRemaining > 0) {
-            setInterval(updateClock, 1000);
-        } else if (timer.timeRemaining < 0) {
+        if (timer.timeRemaining <= 0) {
             timerHours.textContent = "00";
             timerMinutes.textContent = "00";
             timerSeconds.textContent = "00";
+            clearInterval(interval);
         }
     };
     updateClock();
+    interval = setInterval(updateClock, 1000);
 };
 
 export default countTimer;

@@ -24,7 +24,7 @@ import sendForm from './modules/sendForm';
 
 
 //timer
-countTimer("20 september 2020");
+countTimer("23 september 2020");
 //menu
 toggleMenu();
 //scroll
