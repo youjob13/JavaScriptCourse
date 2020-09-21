@@ -9,10 +9,6 @@ const outputHeroes = document.querySelector(".output-heroes"),
     selectSpecies = document.getElementById('select-species'),
     selectMovies = document.getElementById("select-movies");
 
-const linkHeroesArr = [];
-const arrFilt1 = [];
-const arrFilt2 = [];
-
 fetch("dbHeroes.json", {
         method: "GET",
         headers: {
@@ -31,19 +27,15 @@ fetch("dbHeroes.json", {
         selectMovies.addEventListener("change", () => {
             filterMovies(result);
         });
-
     })
-    .catch((error) => console.log(error));
-
+    .catch((error) => console.error(error));
 
 const choosedMovies = (movies) => {
     const moviesArr = [];
     let arr = [];
-
     movies.forEach((item) => {
         moviesArr.push(item.movies);
     });
-
     moviesArr.forEach((item) => {
         if (item) {
             item.forEach((elem) => {
@@ -51,9 +43,7 @@ const choosedMovies = (movies) => {
             });
         }
     });
-
     arr = arr.filter((item, i) => arr.indexOf(item) === i);
-    console.log(arr);
     arr.forEach((item) => {
         selectMovies.options[selectMovies.selectIndex];
         let newOption = new Option(item, item);
@@ -63,20 +53,30 @@ const choosedMovies = (movies) => {
     return arr;
 };
 
-const addCard = (item) => {
+const addCard = ({
+    name = 'Неизвестно',
+    realName = 'Неизвестно',
+    species = 'Неизвестна',
+    citizenship = 'Неизвестно',
+    gender = 'Неизвестен',
+    birthDay = 'Неизвестна',
+    status = 'Неизвестен',
+    actors = 'Неизвестен',
+    movies = 'Нет данных',
+    photo = 'dbimage/quest.jpg'
+}) => {
     const card = document.createElement("li");
     card.classList.add("heroes");
-    card.innerHTML = `<div class="heroes-info"><strong>Имя:</strong> ${item.name}<br>
-        <strong>Настоящее имя:</strong> ${item.realName} <br>
-        <strong>Раса:</strong> ${item.species} <br>
-        <strong>Гражданство:</strong> ${item.citizenship}<br>
-        <strong>Гражданство:</strong> ${item.citizenship}<br>
-        <strong>Пол:</strong> ${item.gender} <br>
-        <strong>Дата рождения:</strong> ${item.birthDay} <br> 
-        <strong>Статус:</strong> ${item.status} <br> 
-        <strong>Актер:</strong> ${item.actors} <br>
-        <strong>Фильмы:</strong> ${item.movies}</div>
-        <img class = "photo" src = "${item.photo}">`;
+    card.innerHTML = `<div class="heroes-info"><strong>Имя:</strong> ${name}<br>
+        <strong>Настоящее имя:</strong> ${realName} <br>
+        <strong>Раса:</strong> ${species} <br>
+        <strong>Гражданство:</strong> ${citizenship}<br>
+        <strong>Пол:</strong> ${gender} <br>
+        <strong>Дата рождения:</strong> ${birthDay} <br> 
+        <strong>Статус:</strong> ${status} <br> 
+        <strong>Актер:</strong> ${actors} <br>
+        <strong>Фильмы:</strong> ${movies}</div>
+        <img class = "photo" src = "${photo}">`;
     outputMovies.append(card);
     header.textContent = selectMovies.value;
 };

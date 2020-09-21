@@ -24,7 +24,24 @@ ul {
     border-radius: 6px;
 }
 
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .heroes {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: 1s;
+    animation: show 1s 1;
+    animation-fill-mode: forwards;
     max-width: 800px;
     width: 100%;
     margin: 20px auto;
@@ -36,5 +53,4 @@ ul {
 
 li {
     color: #fff;
-
 }
