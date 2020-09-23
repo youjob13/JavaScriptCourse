@@ -3,10 +3,10 @@ const showPhone = () => {
         numberPhoneAccord = document.querySelector('.header-contacts__phone-number-accord'),
         numberPhone = numberPhoneAccord.querySelector('.header-contacts__phone-number');
 
-    const stylePhone = document.createElement('style');
-    document.querySelector('head').append(stylePhone);
+    const style = document.createElement('style');
+    document.querySelector('head').append(style);
 
-    stylePhone.textContent = `
+    style.textContent = `
     .position {
         position: relative!important;
     }
