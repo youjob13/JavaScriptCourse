@@ -1,5 +1,5 @@
 'use strict';
 
-import menu from './modules/menu';
+import showPhone from './modules/showPhone';
 
-menu();
+showPhone();

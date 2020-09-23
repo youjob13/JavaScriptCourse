@@ -1,4 +1,4 @@
-const addMenu = () => {
+const showPhone = () => {
     const arrow = document.querySelector('.header-contacts__arrow'),
         numberPhoneAccord = document.querySelector('.header-contacts__phone-number-accord'),
         numberPhone = numberPhoneAccord.querySelector('.header-contacts__phone-number');
@@ -25,4 +25,4 @@ const addMenu = () => {
     });
 };
 
-export default addMenu;
+export default showPhone;
