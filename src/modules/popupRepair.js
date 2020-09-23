@@ -5,7 +5,7 @@ const togglePopUpRepair = () => {
   document.addEventListener("click", (e) => {
     if (
       e.target.matches(".no-overflow") ||
-      e.target.matches(".desktop-hide a")
+      e.target.matches(".link-list-repair a")
     ) {
       document.querySelector(".popup-dialog-menu").style.transform = null;
       document.querySelector(".popup-dialog-menu").style.opacity = "0";
