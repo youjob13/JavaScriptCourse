@@ -9,7 +9,6 @@ const togglePopUpPrivacy = () => {
             popupPrivacy.style.visibility = 'hidden';
         }
     });
-
 };
 
 export default togglePopUpPrivacy;
