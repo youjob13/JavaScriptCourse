@@ -6,7 +6,7 @@ const showPhone = () => {
     const style = document.createElement('style');
     document.querySelector('head').append(style);
 
-    style.textContent = `
+    style.textContent = style.textContent + `
     .position {
         position: relative!important;
     }

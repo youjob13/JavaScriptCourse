@@ -7,7 +7,7 @@ import popupRepair from './modules/popupRepair';
 import popupPrivacy from './modules/popupPrivacy';
 import showPrompt from './modules/showPrompt';
 import sliderRepair from './modules/sliderRepair';
-
+import agreementSlider from './modules/agreementSlider';
 
 showPhone();
 menu();
@@ -16,3 +16,4 @@ popupRepair();
 popupPrivacy();
 showPrompt();
 sliderRepair();
+agreementSlider();

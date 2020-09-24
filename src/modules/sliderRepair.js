@@ -2,28 +2,34 @@ const sliderRepair = () => {
   const slider = document.querySelector(".repair-types-slider"),
     style = document.querySelector("style"),
     btnRepair = document.querySelectorAll(".repair-types-nav__item"),
-    listRepairBtn = document.querySelector(".nav-list-repair"),
     counterSlider = document
-      .querySelector(".repair-types-slider-wrap")
-      .querySelector(".slider-counter-content__current"),
+    .querySelector(".repair-types-slider-wrap")
+    .querySelector(".slider-counter-content__current"),
     slideArr = slider.querySelector(".types-repair1").querySelectorAll("img");
   let currentSlide = 0;
 
   slideArr[0].classList.add("slide-portfolio-active");
-  listRepairBtn.style.overflow = "hidden";
-  style.textContent = `
+  style.textContent = style.textContent + `
         .slide-portfolio-active {
             display: block !important; 
         }
         .repair-types-slider__slide img {
             display: none;
-        }`;
+        }
+        @media(max-width: 1080px) {
+        .nav-list-repair {
+          overflow:hidden;
+        }
+    }`;
 
   const nextSlide = (elem, index, link) => {
     if (document.body.clientWidth < 1024) {
-      listRepairBtn.style.transform = `translateX(-${
-        btnRepair[index].offsetWidth * index
-      }px)`;
+      style.textContent = style.textContent + `
+      @media(max-width: 1080px) {
+      .nav-list-repair {
+        transform: translateX(-${btnRepair[index].offsetWidth * index}px);
+      };
+    }`;
     }
     btnRepair[index].classList.add("active");
     elem[index].classList.add(link);
@@ -35,7 +41,6 @@ const sliderRepair = () => {
 
   document.addEventListener("click", (e) => {
     prevSlide(slideArr, currentSlide, "slide-portfolio-active");
-    console.log(e.target);
     if (
       e.target.closest("#repair-types-arrow_right") ||
       e.target.closest("#nav-arrow-repair-right_base")
