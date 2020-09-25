@@ -12,6 +12,8 @@ import sliderDesigner from './modules/sliderDesigner';
 import showPromptProblem from './modules/showPromptProblem';
 import popupConsultation from './modules/popupConsultation';
 import getAccordion from './modules/getAccordion';
+import getTabWork from './modules/getTabWork';
+import sliderFeedback from './modules/sliderFeedback';
 
 showPhone();
 menu();
@@ -25,3 +27,5 @@ sliderDesigner();
 showPromptProblem();
 popupConsultation();
 getAccordion();
+getTabWork();
+sliderFeedback();
