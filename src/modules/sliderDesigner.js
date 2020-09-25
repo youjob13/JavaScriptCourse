@@ -1,3 +1,4 @@
+//доделать
 const sliderDesigner = () => {
     const slider = document.querySelector('.designs-slider'),
         slides = slider.children,

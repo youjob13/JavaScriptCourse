@@ -9,6 +9,8 @@ import showPrompt from './modules/showPrompt';
 import sliderRepair from './modules/sliderRepair';
 import agreementSlider from './modules/agreementSlider';
 import sliderDesigner from './modules/sliderDesigner';
+import showPromptProblem from './modules/showPromptProblem';
+import popupConsultation from './modules/popupConsultation';
 
 showPhone();
 menu();
@@ -19,3 +21,5 @@ showPrompt();
 sliderRepair();
 agreementSlider();
 sliderDesigner();
+showPromptProblem();
+popupConsultation();
