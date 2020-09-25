@@ -5,6 +5,7 @@ const agreementSlider = () => {
     popup = document.querySelector(".popup-transparency"),
     closePopup = popup.querySelector(".close"),
     closePopup2 = popup.querySelector(".desktop-hide"),
+    counterSlide = popup.querySelector('.slider-counter-content'),
     style = document.querySelector("style");
   let currentSlide = 0;
   style.textContent =
@@ -63,11 +64,13 @@ const agreementSlider = () => {
       if (e.target === item) {
         popup.style.visibility = "visible";
         popupSlide[i].style.display = "flex";
+        currentSlide = i;
       }
       if (e.target === closePopup || e.target === closePopup2) {
         popup.style.visibility = "hidden";
         popupSlide[i].style.display = "none";
       }
+
     });
     //popup слайдер
     if (
@@ -90,6 +93,7 @@ const agreementSlider = () => {
       nextSlide(popupSlide, currentSlide);
       nextSlide(agreementSlides, currentSlide);
     }
+  counterSlide.textContent = currentSlide + 1;
   });
 };
 
