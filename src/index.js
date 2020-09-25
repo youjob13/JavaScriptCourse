@@ -11,6 +11,7 @@ import agreementSlider from './modules/agreementSlider';
 import sliderDesigner from './modules/sliderDesigner';
 import showPromptProblem from './modules/showPromptProblem';
 import popupConsultation from './modules/popupConsultation';
+import getAccordion from './modules/getAccordion';
 
 showPhone();
 menu();
@@ -23,3 +24,4 @@ agreementSlider();
 sliderDesigner();
 showPromptProblem();
 popupConsultation();
+getAccordion();
