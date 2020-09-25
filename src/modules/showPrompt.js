@@ -2,7 +2,8 @@ const showPrompt = () => {
     const hiddenBlock = document.querySelectorAll('.formula-item-popup'),
         hiddenSlides = document.querySelector('.desktop-hide').querySelectorAll('.formula-item-popup'),
         formula = document.querySelector('.wrapper_small').querySelectorAll('.formula-item'),
-        formulaSlide = document.querySelectorAll('.formula-slider__slide');
+        formulaSlide = document.querySelectorAll('.formula-slider__slide'),
+        style = document.querySelector('style');
 
     formulaSlide.forEach((item, i) => {
         item.addEventListener('mouseover', () => {
@@ -13,6 +14,10 @@ const showPrompt = () => {
         item.addEventListener('mouseout', () => {
             hiddenSlides[i].style.visibility = null;
             hiddenSlides[i].style.opacity = null;
+            style.textContent = style.textContent + `
+        .formula-item-popup:before {
+            transform: rotateZ(360deg);
+        }`
         });
     });
 
@@ -23,6 +28,10 @@ const showPrompt = () => {
             hiddenBlock[i].style.top = null;
             if (hiddenBlock[i].getBoundingClientRect().top < 0) {
                 hiddenBlock[i].style.top = '90px';
+                style.textContent = style.textContent + `
+        .formula-item-popup:before {
+            transform: rotateZ(180deg);
+        }`
             }
         });
         item.addEventListener('mouseout', () => {
@@ -30,6 +39,10 @@ const showPrompt = () => {
             hiddenBlock[i].style.opacity = null;
             hiddenSlides[i].style.visibility = null;
             hiddenSlides[i].style.opacity = null;
+            style.textContent = style.textContent + `
+        .formula-item-popup:before {
+            transform: rotateZ(360deg);
+        }`
         });
     });
 };
