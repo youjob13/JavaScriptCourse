@@ -8,7 +8,6 @@ const showPromptProblem = () => {
 
     problemSlide.forEach((item, i) => {
         item.addEventListener('mouseover', () => {
-            console.log(hiddenBlock[i]);
             hiddenSlides[i].style.visibility = 'visible';
             hiddenSlides[i].style.opacity = '1';
         });
