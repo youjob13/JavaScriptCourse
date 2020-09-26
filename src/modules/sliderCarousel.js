@@ -70,16 +70,15 @@ export default class SliderCarousel {
             if (this.options.position < 0) {
                 this.options.position = this.slides.length - this.slidesToShow;
                 this.wrap.style.transform = `translateX(-${
-          this.options.position * this.options.widthSlide
-        }%)`;
+                this.options.position * this.options.widthSlide
+            }%)`;
             } else {
                 this.wrap.style.transform = `translateX(-${
-          this.options.position * this.options.widthSlide
-        }%)`;
+                this.options.position * this.options.widthSlide
+            }%)`;
             }
-
-
         }
+        
     }
 
     nextSlider() {
