@@ -14,6 +14,8 @@ import getAccordion from './modules/getAccordion';
 import getTabWork from './modules/getTabWork';
 import sliderFeedback from './modules/sliderFeedback';
 import sliderDesigner from './modules/sliderDesigner';
+import SliderCarousel from './modules/sliderCarousel';
+import sliderPortfolio from './modules/sliderPortfolio';
 
 showPhone();
 menu();
@@ -29,3 +31,13 @@ getAccordion();
 getTabWork();
 sliderFeedback();
 sliderDesigner();
+const carousel = new SliderCarousel({
+    main: ".wrapper",
+    wrap: ".partners-slider",
+    prev: "#partners-arrow_left",
+    next: "#partners-arrow_right",
+    slidesToShow: 2,
+    infinity: true
+});
+carousel.init();
+sliderPortfolio();
