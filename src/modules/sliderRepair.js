@@ -66,11 +66,11 @@ const sliderRepair = () => {
   document.addEventListener("click", (e) => {
     //табы + слайдер для табов
     if (
-      e.target.closest(".repair-types-nav") ||
+      e.target.closest(".repair-types-nav__item") ||
       e.target.closest("#nav-arrow-repair-right_base") ||
       e.target.closest("#nav-arrow-repair-left_base")
     ) {
-      if (e.target.closest(".repair-types-nav")) {
+      if (e.target.closest(".repair-types-nav__item")) {
         arraySlides[currentSlide].classList.remove("slide-portfolio-active");
         btnRepair.forEach((item, i) => {
           if (e.target === item) {
