@@ -1,33 +1,33 @@
 const sliderDesigner = () => {
   const sliders = document.querySelector(".designs-slider").children,
     popupSliders = document
-      .querySelector(".popup-design-slider")
-      .querySelectorAll("img"),
+    .querySelector(".popup-design-slider")
+    .querySelectorAll("img"),
     popupDesignContent = document.querySelectorAll(".popup-design-text"),
     navigationBase = document
-      .getElementById("designs-list")
-      .querySelectorAll(".designs-nav__item"),
+    .getElementById("designs-list")
+    .querySelectorAll(".designs-nav__item"),
     navigationPopup = document
-      .getElementById("nav-list-popup-designs")
-      .querySelectorAll(".designs-nav__item_popup"),
+    .getElementById("nav-list-popup-designs")
+    .querySelectorAll(".designs-nav__item_popup"),
     previewSlides = document.querySelectorAll(".preview-block"),
     currentNumSlide = document
-      .querySelector("#designs-counter")
-      .querySelector(".slider-counter-content__current"),
+    .querySelector("#designs-counter")
+    .querySelector(".slider-counter-content__current"),
     totalNumSlide = document
-      .querySelector("#designs-counter")
-      .querySelector(".slider-counter-content__total"),
+    .querySelector("#designs-counter")
+    .querySelector(".slider-counter-content__total"),
     currentNumSlidePopup = document
-      .getElementById("popup-designs-counter")
-      .querySelector(".slider-counter-content__current"),
+    .getElementById("popup-designs-counter")
+    .querySelector(".slider-counter-content__current"),
     totalNumSlidePopup = document
-      .getElementById("popup-designs-counter")
-      .querySelector(".slider-counter-content__total"),
+    .getElementById("popup-designs-counter")
+    .querySelector(".slider-counter-content__total"),
     popupDesigner = document.querySelector(".popup-design"),
     closePopupDesigner = popupDesigner.querySelector(".close"),
     closePopupDesignerSmall = document
-      .querySelector(".popup-design-tab")
-      .querySelector(".close"),
+    .querySelector(".popup-design-tab")
+    .querySelector(".close"),
     style = document.querySelector("style");
   let currentSlider = 0;
   let currentSliderVal = sliders[currentSlider].querySelectorAll(
@@ -208,12 +208,15 @@ const sliderDesigner = () => {
     //popup
     if (e.target.closest(".link-list-designs")) {
       popupDesigner.style.visibility = "visible";
+      document.body.style.overflow = 'hidden';
+      popupSliders[index].setAttribute('src', `${elem[index].querySelector('img').getAttribute('src')}`);
     }
     if (
       e.target === closePopupDesigner ||
       e.target === closePopupDesignerSmall
     ) {
       popupDesigner.style.visibility = "hidden";
+      document.body.style.overflow = 'auto';
     }
     if (e.target.closest(".designs-nav__item_popup")) {
       moveSlidesTab(e.target, navigationPopup, navigationBase);
