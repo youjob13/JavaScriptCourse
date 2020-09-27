@@ -9,7 +9,7 @@ const getAccordion = () => {
   document.addEventListener("click", (e) => {
     accordionHeader.forEach((item, i) => {
       if (e.target === item) {
-        accordionHeader[i].classList.add("msg-active");
+        accordionHeader[i].classList.toggle("msg-active");
       } else {
         accordionHeader[i].classList.remove("msg-active");
       }
