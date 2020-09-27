@@ -29,35 +29,35 @@ const sliderPortfolio = () => {
     currentSlide = 0,
     slideToShow = 0;
   popupPortfolioTotal.textContent = popupPortfolioSlides.length;
-
   style.textContent =
     style.textContent +
     `   .portfolio-slider__slide {
             transition: transform .5s!important;
             will-change: transform!important;
         }
-        .popup-portfolio-slider__slide {
-          display:none;
+         @media (max-width: 575px) {
+           .portfolio-slider__slide {
+            display: none;
         }
-        
-        @media (max-width: 575px) {
-          #portfolio .mobile-hide .portfolio-slider__slide-frame{
-            display:flex;
-            background-color:red;
-          }
-          #portfolio .mobile-hide {
+           .portfolio-slider__slide-frame:first-child {
             display:flex;
           }
-          .portfolio-slider-mobile {
-          display:none;
+          .portfolio-slider__slide-frame {
+            display:none;
+          }
+          #portfolio-arrow_right {
+            display:flex;
+          }
+          #portfolio-counter {
+            z-index:999;
+          }
         }
-        #portfolio-counter {
-          z-index:999;
-        }
-        }
+       
         `;
+
   popupPortfolioSlides[0].style.display = 'block';
   popupPortfolioContent[0].style.display = 'block';
+
   const nextSlide = (elem, index) => {
     style.textContent =
       style.textContent +
@@ -74,24 +74,7 @@ const sliderPortfolio = () => {
         }`;
     sliderCounterCurrent.textContent = index + 1;
   };
-  const nextSlides = (elem, index) => {
-    style.textContent =
-      style.textContent +
-      `#portfolio .mobile-hide .portfolio-slider__slide-frame{
-            display:flex;
-          }`;
-    sliderCounterCurrent.textContent = index + 1;
-    // elem[index].style.display = 'flex';
-  };
-  const prevSlides = (elem, index) => {
-    style.textContent =
-      style.textContent +
-      `#portfolio .mobile-hide .portfolio-slider__slide-frame{
-            display:none;
-          }`;
-    sliderCounterCurrent.textContent = index + 1;
-    // elem[index].style.display = 'none';
-  };
+
 
   const prevSidePopup = (elem, index) => {
     elem[index].style.display = 'none';
@@ -102,6 +85,15 @@ const sliderPortfolio = () => {
     popupPortfolioCounter.textContent = index + 1;
   };
 
+  const nextSlides = (elem, index) => {
+    console.log(elem[index]);
+    elem[index].style.display = 'flex';
+    sliderCounterCurrent.textContent = index + 1;
+  };
+  const prevSlides = (elem, index) => {
+    elem[index].style.display = 'none';
+    sliderCounterCurrent.textContent = index + 1;
+  };
 
   document.addEventListener("click", (e) => {
     if (e.target.closest("#portfolio-arrow_left") ||
@@ -109,9 +101,7 @@ const sliderPortfolio = () => {
 
       if (document.body.clientWidth < 575) {
         slideToShow = slides.length;
-        console.log(slideToShow);
         sliderCounterTotal.textContent = slideToShow;
-
         prevSlides(slides, currentSlideColumn);
         if (e.target.closest("#portfolio-arrow_right")) {
           currentSlideColumn++;
@@ -119,14 +109,14 @@ const sliderPortfolio = () => {
         if (e.target.closest("#portfolio-arrow_left")) {
           currentSlideColumn--;
         }
-        if (currentSlideColumn >= slides.length) {
+        arrowRight.style.display = "flex";
+        if (currentSlideColumn === slides.length - 1) {
           arrowRight.style.display = "none";
         }
         arrowLeft.style.display = "flex";
-        if (currentSlideColumn <= 0) {
+        if (currentSlideColumn === 0) {
           arrowLeft.style.display = "none";
         }
-        arrowRight.style.display = "flex";
         nextSlides(slides, currentSlideColumn);
       } else {
         if (document.body.clientWidth > 1024) {
@@ -138,7 +128,6 @@ const sliderPortfolio = () => {
         if (document.body.clientWidth < 901) {
           slideToShow = slideColumn.length;
         }
-
 
         if (e.target.closest("#portfolio-arrow_right")) {
           ++currentSlideColumn;
@@ -158,6 +147,7 @@ const sliderPortfolio = () => {
         }
       }
     }
+
     if (e.target.closest(".portfolio-slider__slide-frame")) {
       disableScroll(popup);
     }
@@ -184,6 +174,7 @@ const sliderPortfolio = () => {
       nextSidePopup(popupPortfolioSlides, currentSlide);
       nextSidePopup(popupPortfolioContent, currentSlide);
     }
+
     // if (e.target.closest('#portfolio-arrow-mobile_left') ||
     //   e.target.closest('.portfolio-slider__slide-frame')) {
     //   prevSlides(slides, currentSlide);
