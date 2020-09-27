@@ -16,8 +16,8 @@ import sliderFeedback from './modules/sliderFeedback';
 import sliderDesigner from './modules/sliderDesigner';
 import SliderCarousel from './modules/sliderCarousel';
 import sliderPortfolio from './modules/sliderPortfolio';
-import popupThank from './modules/popupThank';
 import getDataRepair from './modules/getDataRepair'
+import sendForm from './modules/sendForm';
 
 showPhone();
 menu();
@@ -43,5 +43,5 @@ const carousel = new SliderCarousel({
 });
 carousel.init();
 sliderPortfolio();
-popupThank();
 getDataRepair();
+sendForm();
