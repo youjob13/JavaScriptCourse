@@ -3,19 +3,17 @@ const getTabWork = () => {
         .querySelector(".scheme-slider")
         .querySelectorAll(".scheme-slider__slide"),
         description = document.querySelectorAll(".scheme-description-block"),
+        navList = document.getElementById('scheme-list'),
         navigation = document
         .getElementById("scheme-list")
         .querySelectorAll(".scheme-nav__item"),
         style = document.querySelector("style");
     let currentSlide = 0;
-
     style.textContent =
         style.textContent +
-        `
-        .scheme-slider__slide {
+        `.scheme-slider__slide {
             display: none;
-        }
-        `;
+        }`;
     slide[0].style.display = "block";
 
     const nextSlide = (elem, index) => {

@@ -1,3 +1,6 @@
+import disableScroll from './disableScroll';
+import allowScroll from './allowScroll';
+
 const togglePopUpRepair = () => {
   const popupRepair = document.querySelector(".popup-repair-types"),
     popupRepairClose = popupRepair.querySelectorAll(".close");
@@ -9,11 +12,11 @@ const togglePopUpRepair = () => {
     ) {
       document.querySelector(".popup-dialog-menu").style.transform = null;
       document.querySelector(".popup-dialog-menu").style.opacity = "0";
-      popupRepair.style.visibility = "visible";
+      disableScroll(popupRepair);
     }
     popupRepairClose.forEach((item) => {
       if (e.target === item) {
-        popupRepair.style.visibility = "hidden";
+        allowScroll(popupRepair);
       }
     });
   });

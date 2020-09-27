@@ -1,14 +1,15 @@
+import disableScroll from './disableScroll';
+import allowScroll from './allowScroll';
+
 const togglePopUpPrivacy = () => {
     const popupPrivacy = document.querySelector('.popup-privacy'),
-        closePopupPrivacy = popupPrivacy.querySelector('.close');
-
+        closePopupPrivacy = popupPrivacy.querySelector('.close'),
+        closePopupPrivacy2 = popupPrivacy.querySelector('.desktop-hide');
     document.addEventListener('click', (e) => {
         if (e.target.matches('.link-privacy')) {
-            popupPrivacy.style.visibility = 'visible';
-            document.body.style.overflow = 'hidden';
-        } else if (e.target === closePopupPrivacy) {
-            popupPrivacy.style.visibility = 'hidden';
-            document.body.style.overflow = 'auto';
+            disableScroll(popupPrivacy);
+        } else if (e.target === closePopupPrivacy || e.target === closePopupPrivacy2) {
+            allowScroll(popupPrivacy);
         }
     });
 };

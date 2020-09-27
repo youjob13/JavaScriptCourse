@@ -1,12 +1,15 @@
+import disableScroll from './disableScroll';
+import allowScroll from './allowScroll';
+
 const popupThank = () => {
     const popup = document.querySelector('.popup-thank');
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('form>button')) {
-            popup.style.visibility = 'visible';
+            disableScroll(popup);
         }
         if (e.target.closest('.close-thank')) {
-            popup.style.visibility = 'hidden';
+            allowScroll(popup);
         }
     });
 };

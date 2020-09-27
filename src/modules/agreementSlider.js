@@ -1,3 +1,6 @@
+import disableScroll from './disableScroll';
+import allowScroll from './allowScroll';
+
 const agreementSlider = () => {
   const agreementSlides = document.querySelectorAll(".transparency-item"),
     agreements = document.querySelectorAll(".transparency-item__img"),
@@ -62,12 +65,12 @@ const agreementSlider = () => {
     //popup окно
     agreements.forEach((item, i) => {
       if (e.target === item) {
-        popup.style.visibility = "visible";
+        disableScroll(popup);
         popupSlide[i].style.display = "flex";
         currentSlide = i;
       }
       if (e.target === closePopup || e.target === closePopup2) {
-        popup.style.visibility = "hidden";
+        allowScroll(popup);
         popupSlide[i].style.display = "none";
       }
 
@@ -93,7 +96,7 @@ const agreementSlider = () => {
       nextSlide(popupSlide, currentSlide);
       nextSlide(agreementSlides, currentSlide);
     }
-  counterSlide.textContent = currentSlide + 1;
+  counterSlide.textContent = `${currentSlide + 1}/${agreementSlides.length}`;
   });
 };
 

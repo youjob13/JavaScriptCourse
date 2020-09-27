@@ -43,7 +43,7 @@ export default class SliderCarousel {
     addStyle() {
         const style = document.createElement("style");
         style.textContent = style.textContent + `
-      .wrapper {
+      #partners .wrapper {
         overflow: hidden !important;
       }
       .partners-slider {
