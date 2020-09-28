@@ -1,54 +1,82 @@
 const showPrompt = () => {
     const hiddenBlock = document.querySelectorAll('.formula-item-popup'),
-        hiddenSlides = document.querySelector('.desktop-hide').querySelectorAll('.formula-item-popup'),
         formula = document.querySelector('.wrapper_small').querySelectorAll('.formula-item'),
         formulaSlide = document.querySelectorAll('.formula-slider__slide'),
         style = document.querySelector('style');
+    let currentSlide = 0;
+    style.textContent =
+        style.textContent +
+        `
+        .formula-slider__slide {
+            opacity:0.8;
+        }
+    @media (max-width: 1024px) {
+        .formula-item {
+            max-width: 340px;
+            display: none;
+        }
+    }`;
+    formulaSlide[0].style.display = "flex";
 
-    formulaSlide.forEach((item, i) => {
+    formula.forEach((item, i) => {
         item.addEventListener('mouseover', () => {
-            console.log(hiddenBlock[i]);
-            hiddenSlides[i].style.visibility = 'visible';
-            hiddenSlides[i].style.opacity = '1';
+            formula[i].classList.add('active-item');
+            hiddenBlock[i].style.top = null;
+            if (hiddenBlock[i].getBoundingClientRect().top < 0) {
+                hiddenBlock[i].style.top = '90px';
+                style.textContent = style.textContent + `
+                @media (min-width: 1024px) {
+                    .formula-item-popup:before {
+                        transform: rotateZ(180deg);
+                    }
+                }`;
+            }
         });
         item.addEventListener('mouseout', () => {
-            hiddenSlides[i].style.visibility = null;
-            hiddenSlides[i].style.opacity = null;
+            formula[i].classList.remove('active-item');
             if (document.body.clientWidth > 1024) {
                 style.textContent = style.textContent + `
-        .formula-item-popup:before {
-            transform: rotateZ(360deg);
-        }`
+                @media (min-width: 1024px) {
+                    .formula-item-popup:before {
+                        transform: rotateZ(360deg);
+                    }
+                }`;
             }
         });
     });
 
-    formula.forEach((item, i) => {
-        item.addEventListener('mouseover', () => {
-            hiddenBlock[i].style.visibility = 'visible';
-            hiddenBlock[i].style.opacity = '1';
-            hiddenBlock[i].style.top = null;
+    formulaSlide.forEach((item, i) => {
+        item.addEventListener('mouseover', () => formulaSlide[i].classList.add('active-item'));
+        item.addEventListener('mouseout', () => formulaSlide[i].classList.remove('active-item'));
+    });
 
-            if (hiddenBlock[i].getBoundingClientRect().top < 0) {
-                hiddenBlock[i].style.top = '90px';
-                style.textContent = style.textContent + `
-        .formula-item-popup:before {
-            transform: rotateZ(180deg);
-        }`
+    const nextSlide = (elem, index) => {
+        elem[index].style.display = "flex";
+    };
+    const prevSlide = (elem, index) => {
+        elem[index].style.display = "none";
+    };
+
+    document.addEventListener("click", (e) => {
+        if (
+            e.target.closest("#formula-arrow_left") ||
+            e.target.closest("#formula-arrow_right")
+        ) {
+            prevSlide(formulaSlide, currentSlide);
+            if (e.target.closest("#formula-arrow_right")) {
+                currentSlide++;
             }
-        });
-        item.addEventListener('mouseout', () => {
-            hiddenBlock[i].style.visibility = null;
-            hiddenBlock[i].style.opacity = null;
-            hiddenSlides[i].style.visibility = null;
-            hiddenSlides[i].style.opacity = null;
-            if (document.body.clientWidth > 1024) {
-                style.textContent = style.textContent + `
-        .formula-item-popup:before {
-            transform: rotateZ(360deg);
-        }`
+            if (e.target.closest("#formula-arrow_left")) {
+                currentSlide--;
             }
-        });
+            if (currentSlide >= formulaSlide.length) {
+                currentSlide = 0;
+            }
+            if (currentSlide < 0) {
+                currentSlide = formulaSlide.length - 1;
+            }
+            nextSlide(formulaSlide, currentSlide);
+        }
     });
 };
 

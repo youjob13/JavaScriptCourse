@@ -3,6 +3,10 @@ const showPromptProblem = () => {
         .querySelector("#problems")
         .querySelector(".wrapper_middle")
         .querySelectorAll(".problems-item-popup"),
+        iconBg = document.querySelector("#problems")
+        .querySelector(".wrapper_middle")
+        .querySelectorAll('.problems-item__icon-inner'),
+        iconInnerPlus = document.querySelectorAll('.svg-wrap'),
         hiddenSlides = document
         .querySelector("#problems")
         .querySelector(".wrapper_small")
@@ -20,15 +24,24 @@ const showPromptProblem = () => {
     style.textContent =
         style.textContent +
         `
-    @media (max-width: 1024px) {
         .problems-item {
-            max-width: 340px;
-            display: none;
+            opacity: 0.8;
         }
-    }
+        @media (max-width: 1024px) {
+            .problems-item {
+                max-width: 340px;
+                display: none;
+            }
+        }
         @media (min-width: 1024px) {
-        .problems-item {
-            opacity: 0.1;
+            .problems-item-popup-1 {
+                top:-340px;
+            }
+            .problems-item-popup-1:before {
+                transform: rotateZ(360deg);
+            }
+        .svg-wrap {
+            transition: .2s;
         }
     }`;
 
@@ -69,55 +82,53 @@ const showPromptProblem = () => {
         item.addEventListener("mouseover", () => {
             hiddenSlides[i].classList.add("active-item");
             problemSlide[i].classList.add("active-item");
+            problemSlide[i].style.opacity = '1';
         });
         item.addEventListener("mouseout", () => {
             hiddenSlides[i].classList.remove("active-item");
             problemSlide[i].classList.remove("active-item");
+            problemSlide[i].style.opacity = '0.8';
         });
     });
 
     problem.forEach((item, i) => {
         item.addEventListener("mouseover", () => {
+            iconBg[i].classList.add("active-item");
+            iconInnerPlus[i].style.transform = 'rotate(45deg)';
             hiddenBlock[i].style.visibility = "visible";
             hiddenBlock[i].style.opacity = "1";
             problem[i].style.opacity = "1";
+            problem[i].style.visibility = "visible";
             hiddenBlock[i].style.top = null;
-
+            problem[i].classList.add('active-item');
             if (hiddenBlock[i].getBoundingClientRect().top < 0) {
                 hiddenBlock[i].style.top = "90px";
                 style.textContent =
                     style.textContent +
-                    `
-        @media (min-width: 1024px) {
-
-        .problems-item-popup:before {
-            transform: rotateZ(180deg);
-        }
-        .problems-item-popup-1:before {
-                    transform: rotateZ(180deg);
-                }
-            }`;
+                    `@media (min-width: 1024px) {
+            .problems-item-popup:before {
+                transform: rotateZ(180deg);
+            }
+        }`;
             }
         });
         item.addEventListener("mouseout", () => {
+            iconBg[i].classList.remove("active-item");
+            iconInnerPlus[i].style.transform = 'rotate(0deg)';
             hiddenBlock[i].style.visibility = null;
             hiddenBlock[i].style.opacity = null;
-            problem[i].style.opacity = null;
-            hiddenSlides[i].style.visibility = null;
-            hiddenSlides[i].style.opacity = null;
+            problem[i].style.opacity = '0.8';
+            problem[i].style.visibility = null;
+            problem[i].classList.remove('active-item');
             if (document.body.clientWidth > 1024) {
                 style.textContent =
                     style.textContent +
                     `
         @media (min-width: 1024px) {
-
-        .problems-item-popup:before {
-            transform: rotateZ(360deg);
-        }
-        .problems-item-popup-1:before {
-                    transform: rotateZ(180deg);
-                }
-            }`;
+            .problems-item-popup:before {
+                transform: rotateZ(360deg);
+            }
+        }`;
             }
         });
     });
