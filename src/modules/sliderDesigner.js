@@ -40,7 +40,18 @@ const sliderDesigner = () => {
 
   style.textContent =
     style.textContent +
-    `.designs-slider__style-slide {
+    `
+    .nav-popup {
+      margin-bottom:10px;
+      margin-top:0px;
+    }
+    .popup-dialog-design {
+      overflow:scroll;
+    }
+    .popup-design-slider__style-slide {
+      
+    }
+    .designs-slider__style-slide {
         display:none;
     }
         @media(max-width: 1080px) {
