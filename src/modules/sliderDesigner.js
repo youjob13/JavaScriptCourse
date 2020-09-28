@@ -59,6 +59,10 @@ const sliderDesigner = () => {
                 overflow:hidden;
             }
         }`;
+  popupSliders.forEach(item => {
+    item.style.display = 'none';
+  })
+  popupSliders[0].style.display = 'flex';
   currentSliderVal[0].style.display = "flex";
   const nextSlider = (elem, index, navigation, navBorder) => {
     if (document.body.clientWidth < 1024) {
@@ -94,6 +98,7 @@ const sliderDesigner = () => {
     elem[index].style.display = "flex";
     currentPreviewSlideBorder.classList.add("preview_active");
     popupSliders[index].setAttribute('src', `${elem[index].querySelector('img').getAttribute('src')}`);
+    popupSliders[index].style.display = 'flex';
   };
   const prevSlide = (elem, index) => {
     const currentPreviewSlideBorder = currentPreviewSlide[index].querySelector(
@@ -102,6 +107,7 @@ const sliderDesigner = () => {
     elem[index].style.display = "none";
     currentPreviewSlideBorder.classList.remove("preview_active");
     popupSliders[index].removeAttribute('src');
+    popupSliders[index].style.display = 'none';
   };
 
   const changeSliderVal = () => {
