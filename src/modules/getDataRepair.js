@@ -6,8 +6,10 @@ const getDataRepair = () => {
     const style = document.querySelector('style');
     let currentSlide = 0;
 
-
-
+    style.textContent = style.textContent + `
+    .active_btn {
+        border-color:orange !important;
+    }`;
     fetch("db/db.json", {
             method: "GET",
             headers: {
@@ -27,6 +29,10 @@ const getDataRepair = () => {
                     getNavList(item);
                 }
             });
+            result[1].priceList.forEach(item => {
+                createElements(item);
+            });
+
             document.addEventListener('click', (e) => {
                 if (e.target.closest('.popup-repair-types-nav__item')) {
                     result.forEach(item => {
@@ -36,47 +42,70 @@ const getDataRepair = () => {
                         }
                     });
                 }
+                const navItem = document.querySelectorAll('.popup-repair-types-nav__item');
+                navItem[0].classList.add('active_btn');
             });
 
             document.addEventListener('click', (e) => {
                 if (e.target.closest('#nav-arrow-popup-repair_right') ||
-                    e.target.closest('#nav-arrow-popup-repair_left')) {
-                    const wrap = document.querySelector('.nav-popup-repair-types');
+                    e.target.closest('#nav-arrow-popup-repair_left') ||
+                    e.target.closest('.popup-repair-types-nav__item')) {
+                    const navItem = document.querySelectorAll('.popup-repair-types-nav__item');
                     const slides = document.querySelector('.nav-list-popup-repair').children;
+                    if (e.target.closest('.popup-repair-types-nav__item')) {
+                        navItem.forEach((item, i) => {
+                            if (item === e.target) {
+                                currentSlide = i;
+                                nextSlide(slides, i, navItem);
+                            }
+                        });
+                    }
                     if (e.target.closest('#nav-arrow-popup-repair_right')) {
                         ++currentSlide;
                         if (currentSlide >= slides.length) {
                             currentSlide = 0;
                         }
-                        nextSide(slides, currentSlide);
+                        nextSlide(slides, currentSlide, navItem);
                     }
                     if (e.target.closest('#nav-arrow-popup-repair_left')) {
                         --currentSlide;
                         if (currentSlide < 0) {
                             currentSlide = slides.length - 1;
                         }
-                        prevSide(slides, currentSlide);
+                        prevSlide(slides, currentSlide, navItem);
                     }
                 }
             });
 
         })
         .catch((error) => console.error(error));
-    const prevSide = (elem, index) => {
+    const getActiveBtn = (index, navItem) => {
+        navItem.forEach((item, i) => {
+            if (i == index) {
+                navItem[i].classList.add('active_btn');
+            } else if (i !== index) {
+                navItem[i].classList.remove('active_btn');
+            }
+        });
+    };
+
+    const prevSlide = (elem, index, navItem) => {
         style.textContent = style.textContent + `
          @media (max-width: 1024px) {
         .nav-list-popup-repair {
             transform: translateX(-${elem[index].offsetLeft}px)
         }
     }`;
+        getActiveBtn(index, navItem);
     };
-    const nextSide = (elem, index) => {
+    const nextSlide = (elem, index, navItem) => {
         style.textContent = style.textContent + `
          @media (max-width: 1024px) {
         .nav-list-popup-repair {
             transform: translateX(-${elem[index].offsetLeft}px)
         } 
     }`;
+        getActiveBtn(index, navItem);
     };
     const getLastChange = (date) => {
         popupRepairDate.textContent = date.date;
@@ -89,29 +118,32 @@ const getDataRepair = () => {
         popupRepairNavList.append(navItem);
     };
     const getContent = (item) => {
-        const tbody = document.createElement('tbody');
-        table.append(tbody);
         item.priceList.forEach(elem => {
-            const itemContentRow = document.createElement('tr');
-            const itemContentName = document.createElement('td');
-            const itemContentUnits = document.createElement('td');
-            const itemContentValue = document.createElement('td');
-            itemContentRow.classList.add('mobile-row');
-            itemContentRow.classList.add('showHide');
-            itemContentName.classList.add('repair-types-name');
-            itemContentName.textContent = elem.typeService;
-            itemContentUnits.classList.add('repair-types-value');
-            itemContentUnits.innerHTML = elem.units.replace(/\d/g, (match) => `<sup>${match}</sup>`);
-            popupRepairContent.append(itemContentRow);
-            itemContentValue.classList.add('repair-types-value');
-            itemContentValue.textContent = `${elem.cost} руб.`;
-
-            tbody.append(itemContentRow);
-            itemContentRow.append(itemContentName);
-            itemContentRow.append(itemContentUnits);
-            itemContentRow.append(itemContentValue);
+            createElements(elem);
         });
     };
+    const createElements = (elem) => {
+        const tbody = document.createElement('tbody');
+        table.append(tbody);
+        const itemContentRow = document.createElement('tr');
+        const itemContentName = document.createElement('td');
+        const itemContentUnits = document.createElement('td');
+        const itemContentValue = document.createElement('td');
+        itemContentRow.classList.add('mobile-row');
+        itemContentRow.classList.add('showHide');
+        itemContentName.classList.add('repair-types-name');
+        itemContentName.textContent = elem.typeService;
+        itemContentUnits.classList.add('repair-types-value');
+        itemContentUnits.innerHTML = elem.units.replace(/\d/g, (match) => `<sup>${match}</sup>`);
+        popupRepairContent.append(itemContentRow);
+        itemContentValue.classList.add('repair-types-value');
+        itemContentValue.textContent = `${elem.cost} руб.`;
+
+        tbody.append(itemContentRow);
+        itemContentRow.append(itemContentName);
+        itemContentRow.append(itemContentUnits);
+        itemContentRow.append(itemContentValue);
+    }
 };
 
 export default getDataRepair;

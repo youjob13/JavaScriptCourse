@@ -86,7 +86,6 @@ const sliderPortfolio = () => {
   };
 
   const nextSlides = (elem, index) => {
-    console.log(elem[index]);
     elem[index].style.display = 'flex';
     sliderCounterCurrent.textContent = index + 1;
   };

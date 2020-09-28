@@ -11,12 +11,12 @@ const sendForm = () => {
     const forms = [];
     forms.push(form1, form2, form3, form4, form5, form6);
     forms.forEach(item => {
-        const inputName = item.querySelector('.feedback-block__form-input_name');
-        const inputPhone = item.querySelector('#feedback-input2');
-        const btn = item.querySelector('.button-feedback-block');
-
+        const checkboxInput = item.querySelector('.checkbox__input');
         item.addEventListener('submit', (e) => {
             e.preventDefault();
+            if (!checkboxInput.checked) {
+                return;
+            }
             const formData = new FormData(item);
 
             let body = {};
