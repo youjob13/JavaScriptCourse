@@ -46,6 +46,12 @@ export default class SliderCarousel {
       #partners .wrapper {
         overflow: hidden !important;
       }
+      @media (max-width: 1024px) {
+        .partners-slider__slide {
+            max-width: 360px;
+            min-height: auto;
+        }
+      }
       .partners-slider {
         display: flex !important;
         transition: transform .5s !important;
