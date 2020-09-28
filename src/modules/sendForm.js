@@ -52,9 +52,9 @@ const sendForm = () => {
                 if (response.status !== 200) {
                     throw new Error('status network is not 200');
                 }
+                popupThank();
                 phoneInput.value = '';
                 nameInput.value = '';
-                popupThank();
             }).catch((error) => console.error(error));
         });
     });
