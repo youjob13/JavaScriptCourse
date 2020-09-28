@@ -69,22 +69,17 @@ const sliderPortfolio = () => {
             text-align:center;
           }
         }
-        @media (max-width: 1024px) {
           .popup-portfolio-slider__slide,
           .popup-portfolio-text {
             display:none;
           } 
-        }
         .portfolio-slider__slide {
             transition: transform .5s!important;
             will-change: transform!important;
         }
         @media (min-width: 1024px) {
-          .popup-arrow_right {
-            right:456px;
-          }
           .popup-arrow {
-            position:fixed;
+            position:absolute;
           }
         }
         @media (max-width: 575px) {
