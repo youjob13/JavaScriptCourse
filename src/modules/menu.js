@@ -1,6 +1,12 @@
 const toggleMenu = () => {
-  const menu = document.querySelector(".popup-dialog-menu");
-
+  const menu = document.querySelector(".popup-dialog-menu"),
+    style = document.querySelector('style');
+    style.textContent= style.textContent + `
+    .popup-dialog-menu {
+      opacity:0;
+    }
+    `;
+    
   document.addEventListener("click", (e) => {
     if (e.target.matches(".menu__icon")) {
       menu.style.transform = "translate3d(0, 0, 0)";
