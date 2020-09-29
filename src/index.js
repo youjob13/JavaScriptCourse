@@ -18,6 +18,7 @@ import SliderCarousel from './modules/sliderCarousel';
 import sliderPortfolio from './modules/sliderPortfolio';
 import getDataRepair from './modules/getDataRepair'
 import sendForm from './modules/sendForm';
+import validatorName from './modules/validatorName';
 
 showPhone();
 menu();
@@ -50,3 +51,4 @@ carousel.init();
 sliderPortfolio();
 getDataRepair();
 sendForm();
+validatorName();

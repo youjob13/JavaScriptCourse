@@ -43,6 +43,9 @@ const getDataRepair = () => {
                     });
                 }
                 const navItem = document.querySelectorAll('.popup-repair-types-nav__item');
+                navItem.forEach(item => {
+                    item.classList.remove('active_btn');
+                });
                 navItem[0].classList.add('active_btn');
             });
 

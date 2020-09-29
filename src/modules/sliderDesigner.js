@@ -226,7 +226,6 @@ const sliderDesigner = () => {
     if (e.target.closest(".link-list-designs")) {
       popupDesigner.style.visibility = "visible";
       document.body.style.overflow = 'hidden';
-      popupSliders[index].setAttribute('src', `${elem[index].querySelector('img').getAttribute('src')}`);
     }
     if (
       e.target === closePopupDesigner ||
@@ -237,7 +236,6 @@ const sliderDesigner = () => {
     }
     if (e.target.closest(".designs-nav__item_popup")) {
       moveSlidesTab(e.target, navigationPopup, navigationBase);
-      moveSlidesPopup(e.target);
     }
     if (
       e.target.closest("#nav-arrow-popup-designs_right") ||
