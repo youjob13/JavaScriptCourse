@@ -18,7 +18,9 @@ const showPhone = () => {
     }
     `;
     
-    arrow.addEventListener('click', () => {
+    arrow.addEventListener('click', (e) => {
+        debugger;
+        e.preventDefault();
         numberPhoneAccord.classList.toggle('position');
         numberPhone.classList.toggle('opacity');
         arrow.classList.toggle('arrow-rotate');

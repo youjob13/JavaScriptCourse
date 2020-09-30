@@ -1,5 +1,17 @@
 'use strict';
 
+import 'nodelist-foreach-polyfill';
+import "@babel/polyfill";
+import elementClosest from 'element-closest';
+elementClosest(window);
+import 'formdata-polyfill';
+import 'es6-promise';
+import 'fetch-polyfill';
+import "cross-browser-polyfill";
+import 'dom-node-polyfills';
+import smoothscroll from 'smoothscroll-polyfill';
+smoothscroll.polyfill();
+
 import showPhone from './modules/showPhone';
 import menu from './modules/menu';
 import popupRepair from './modules/popupRepair';
